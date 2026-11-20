@@ -1,0 +1,195 @@
+{
+  "latest": {
+    "versionCode": 2,
+    "versionName": "1.1.0",
+    "releasedAt": "2026-11-20",
+    "channel": "production",
+    "summary": "Auto-atualização inteligente online via delta binário KDP1 (economiza 7,27 MB vs APK completo), cards e gráficos interativos ao vivo no chat da IA, histórico conversacional estendido (3072 tokens / 12 turnos), edição/cópia de mensagens e geração contínua em segundo plano com notificação.",
+    "highlights": [
+      "Auto-atualização online via Delta Patch KDP1 (-35,6% de download nesta versão)",
+      "Cards e gráficos interativos ao vivo (Top apps, Tempo restante, Rotina, Notas, Metas)",
+      "IA continua processando em segundo plano e notifica quando terminar",
+      "Copiar qualquer mensagem e Editar/reenviar mensagens enviadas"
+    ],
+    "changelog": [
+      "Auto-atualização online automática via delta binário KDP1 com dupla verificação SHA-256",
+      "Tela de Perfil com card de atualizações, barra de progresso, economia de MB e link para histórico",
+      "Banner ao vivo no painel quando uma atualização verificada está pronta para instalar",
+      "Memória conversacional ampliada para 3072 tokens e 12 turnos com sampler anti-loop",
+      "Geração do Qwen em segundo plano (Foreground Service + notificação ao finalizar)",
+      "Ações de Copiar (todas as mensagens) e Editar/Reenviar (mensagens enviadas) com preservação de KV-cache",
+      "Cards interativos no chat para Tempo de Tela, Top 3/5 Apps, Rotina, Metas, Notas e Foco",
+      "Correção da máquina de estados de Tempo de Uso entre Activities e desligamento de tela"
+    ],
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk",
+    "apkSizeBytes": 20392109,
+    "sha256": "fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48",
+    "minSdk": 26,
+    "abi": "arm64-v8a",
+    "patches": [
+      {
+        "fromVersionCode": 1,
+        "fromVersionName": "1.0.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch",
+        "patchSizeBytes": 13126734,
+        "patchSha256": "7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
+      }
+    ],
+    "documentation": [
+      {
+        "title": "Auto-Atualização Delta (KDP1)",
+        "items": [
+          "Endpoint consultado automaticamente quando online: https://krono.rafixx.com/api/releases.json (intervalo automático de 6h ou manual em Perfil).",
+          "Formato binário KDP1 comprimido em GZIP com opcodes OP_COPY (leitura direta dos blocos idênticos do APK instalado em applicationInfo.sourceDir) e OP_DATA (bytes novos).",
+          "Validação dupla de SHA-256 (patch e APK final reconstruído) com fallback transparente para download resumível do APK completo.",
+          "Os pesos offline do Qwen2.5-3B (files/models/) e o banco SQLite Room não são apagados durante a atualização."
+        ]
+      },
+      {
+        "title": "Motor de IA & Continuidade",
+        "items": [
+          "Contexto nativo ampliado para 3072 tokens no llama.cpp v1.0.0 com repeat_penalty = 1.12, janela 128 e presence_penalty = 0.10 após top_k/top_p/min_p.",
+          "Histórico conversacional de até 12 turnos (teto de 4800 caracteres) preservado byte-a-byte para reutilização máxima do prefixo no cache KV.",
+          "Execução desacoplada da Activity via AiSessionHolder (Application) + AiGenerationForegroundService, com notificação dedicada quando o usuário sai do chat."
+        ]
+      },
+      {
+        "title": "Experiência Visual no Chat & Tempo de Uso",
+        "items": [
+          "AiWidgetResolver determinístico em Kotlin anexa cards interativos ao vivo sem aumentar o prompt enviado ao modelo.",
+          "ScreenTimeManager refatorado para máquina de estados por componente (packageName + className) com encerramento automático em SCREEN_NON_INTERACTIVE / KEYGUARD_SHOWN."
+        ]
+      },
+      {
+        "title": "Requisitos & Verificação",
+        "items": [
+          "Compatível com Android 8.0+ (API 26+) ARM64 (arm64-v8a), compilado com alinhamento de página 16 KB para Android 15/16.",
+          "APK v1.1.0 SHA-256: fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48",
+          "Patch Delta v1.0.0 -> v1.1.0 SHA-256: 7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
+        ]
+      }
+    ]
+  },
+  "versions": [
+    {
+      "versionCode": 2,
+      "versionName": "1.1.0",
+      "releasedAt": "2026-11-20",
+      "channel": "production",
+      "summary": "Auto-atualização inteligente online via delta binário KDP1 (economiza 7,27 MB vs APK completo), cards e gráficos interativos ao vivo no chat da IA, histórico conversacional estendido (3072 tokens / 12 turnos), edição/cópia de mensagens e geração contínua em segundo plano com notificação.",
+      "highlights": [
+        "Auto-atualização online via Delta Patch KDP1 (-35,6% de download nesta versão)",
+        "Cards e gráficos interativos ao vivo (Top apps, Tempo restante, Rotina, Notas, Metas)",
+        "IA continua processando em segundo plano e notifica quando terminar",
+        "Copiar qualquer mensagem e Editar/reenviar mensagens enviadas"
+      ],
+      "changelog": [
+        "Auto-atualização online automática via delta binário KDP1 com dupla verificação SHA-256",
+        "Tela de Perfil com card de atualizações, barra de progresso, economia de MB e link para histórico",
+        "Banner ao vivo no painel quando uma atualização verificada está pronta para instalar",
+        "Memória conversacional ampliada para 3072 tokens e 12 turnos com sampler anti-loop",
+        "Geração do Qwen em segundo plano (Foreground Service + notificação ao finalizar)",
+        "Ações de Copiar (todas as mensagens) e Editar/Reenviar (mensagens enviadas) com preservação de KV-cache",
+        "Cards interativos no chat para Tempo de Tela, Top 3/5 Apps, Rotina, Metas, Notas e Foco",
+        "Correção da máquina de estados de Tempo de Uso entre Activities e desligamento de tela"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk",
+      "apkSizeBytes": 20392109,
+      "sha256": "fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "patches": [
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch",
+          "patchSizeBytes": 13126734,
+          "patchSha256": "7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Auto-Atualização Delta (KDP1)",
+          "items": [
+            "Endpoint consultado automaticamente quando online: https://krono.rafixx.com/api/releases.json (intervalo automático de 6h ou manual em Perfil).",
+            "Formato binário KDP1 comprimido em GZIP com opcodes OP_COPY (leitura direta dos blocos idênticos do APK instalado em applicationInfo.sourceDir) e OP_DATA (bytes novos).",
+            "Validação dupla de SHA-256 (patch e APK final reconstruído) com fallback transparente para download resumível do APK completo.",
+            "Os pesos offline do Qwen2.5-3B (files/models/) e o banco SQLite Room não são apagados durante a atualização."
+          ]
+        },
+        {
+          "title": "Motor de IA & Continuidade",
+          "items": [
+            "Contexto nativo ampliado para 3072 tokens no llama.cpp v1.0.0 com repeat_penalty = 1.12, janela 128 e presence_penalty = 0.10 após top_k/top_p/min_p.",
+            "Histórico conversacional de até 12 turnos (teto de 4800 caracteres) preservado byte-a-byte para reutilização máxima do prefixo no cache KV.",
+            "Execução desacoplada da Activity via AiSessionHolder (Application) + AiGenerationForegroundService, com notificação dedicada quando o usuário sai do chat."
+          ]
+        },
+        {
+          "title": "Experiência Visual no Chat & Tempo de Uso",
+          "items": [
+            "AiWidgetResolver determinístico em Kotlin anexa cards interativos ao vivo sem aumentar o prompt enviado ao modelo.",
+            "ScreenTimeManager refatorado para máquina de estados por componente (packageName + className) com encerramento automático em SCREEN_NON_INTERACTIVE / KEYGUARD_SHOWN."
+          ]
+        },
+        {
+          "title": "Requisitos & Verificação",
+          "items": [
+            "Compatível com Android 8.0+ (API 26+) ARM64 (arm64-v8a), compilado com alinhamento de página 16 KB para Android 15/16.",
+            "APK v1.1.0 SHA-256: fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48",
+            "Patch Delta v1.0.0 -> v1.1.0 SHA-256: 7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
+          ]
+        }
+      ]
+    },
+    {
+      "versionCode": 1,
+      "versionName": "1.0.0",
+      "releasedAt": "2026-11-20",
+      "channel": "archive",
+      "summary": "Versão inicial completa do Krono com rotina gamificada, tempo de tela via UsageStatsManager, Modo Foco em foreground, Modo Rápido offline com voz PT-BR e Qwen2.5-3B rodando em motor próprio llama.cpp NDK v1.0.0 com memória pessoal duradoura.",
+      "highlights": [
+        "Motor nativo NDK llama.cpp v1.0.0 compilado com ARMv8.2-a + dotprod + fp16 + i8mm",
+        "Memória pessoal automática e editável no Room SQLite (tabela user_memories)",
+        "Gestão completa de tarefas recorrentes, metas, notas/checklists, foco e backup JSON"
+      ],
+      "changelog": [
+        "Pipeline Android completo em Jetpack Compose com tema Obsidian Arcade (claro e escuro)",
+        "Engine nativa libkrono_llama.so (llama.cpp v1.0.0) com KV cache Q8_0, FlashAttention e pinagem nos núcleos grandes",
+        "Download resumível do Qwen2.5-3B-Instruct (Q4_K_M) direto no armazenamento privado do app",
+        "Memória pessoal de longo prazo (Room v4) com salvamento, atualização, remoção e Desfazer",
+        "Parser instantâneo Modo Rápido + reconhecimento de voz PT-BR offline",
+        "Gamificação (XP, níveis, ofensiva e 14 conquistas), notificações agendadas e backup JSON"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.0.0/Krono-v1.0.0.apk",
+      "apkSizeBytes": 20358761,
+      "sha256": "553806636f1bfc241fb1ef8787abd1c33dc3cd8ca66289a233779db3dc7e8ef2",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "patches": [],
+      "documentation": [
+        {
+          "title": "Arquitetura & Motor Nativo NDK",
+          "items": [
+            "Compilado estaticamente a partir do llama.cpp v1.0.0 com NDK 28.2.13676358, -march=armv8.2-a+dotprod+fp16+i8mm e -Wl,-z,max-page-size=16384.",
+            "Cache de prefixo estático com warmup em segundo plano ao abrir a tela da IA e decodificador UTF-8 seguro para acentos e emojis divididos entre tokens."
+          ]
+        },
+        {
+          "title": "Persistência Local (Room v4)",
+          "items": [
+            "Banco local SQLite armazenando tarefas recorrentes, histórico de conclusões, metas com marcos, notas/checklists, sessões de foco, limites de uso por app e user_memories.",
+            "Exportação e importação completas em arquivo JSON offline."
+          ]
+        },
+        {
+          "title": "Checksums & Instalação",
+          "items": [
+            "Requer Android 8.0+ (API 26+) em dispositivos arm64-v8a.",
+            "APK v1.0.0 SHA-256: 553806636f1bfc241fb1ef8787abd1c33dc3cd8ca66289a233779db3dc7e8ef2"
+          ]
+        }
+      ]
+    }
+  ]
+}
