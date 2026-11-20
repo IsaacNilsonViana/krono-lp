@@ -26,6 +26,8 @@ export interface ReleaseInfo {
   abi?: string;
   patches: DeltaPatchInfo[];
   documentation: DocumentationSection[];
+  signatureAlg?: string;
+  signature?: string;
 }
 
 export interface ReleasesManifest {

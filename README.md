@@ -9,7 +9,8 @@ O **Krono** é um aplicativo Android 100% offline de gestão de rotina gamificad
 
 Este repositório (`krono-lp`) hospeda:
 - A **Landing Page oficial** em produção: [`https://krono.rafixx.com`](https://krono.rafixx.com/)
-- O **manifesto OTA** consumido pelo app para auto-atualização inteligente: [`/api/releases.json`](https://krono.rafixx.com/api/releases.json)
+- Uma **prévia usável interativa** no navegador (Rotina, Krono IA, Foco Pomodoro e Uso & Metas): [`https://krono.rafixx.com/#previa`](https://krono.rafixx.com/#previa)
+- O **manifesto OTA assinado (`SHA256withRSA`)** consumido pelo app para auto-atualização inteligente: [`/api/releases.json`](https://krono.rafixx.com/api/releases.json)
 - O histórico completo de **GitHub Releases**, binários `.apk` assinados e patches delta `.kpatch`.
 
 ---
@@ -53,7 +54,7 @@ sha256sum Krono-v1.1.0.apk
 2. Ao abrir o arquivo, habilite a permissão **Instalar apps desconhecidos** para o navegador/gerenciador de arquivos, se solicitado.
 3. Confirme a instalação.
 
-> **Auto-atualização inteligente Delta (`KDP1`):** a partir da `v1.1.0`, quando conectado à internet, o Krono consulta automaticamente `https://krono.rafixx.com/api/releases.json` (intervalo automático de 6 horas ou manualmente em **Perfil > Atualizações do Krono**), baixa apenas o patch binário `.kpatch` (reaproveitando blocos idênticos do APK instalado), valida o SHA-256 do patch e do APK reconstruído e realiza o fallback automático para download resumível do APK completo caso necessário. O banco SQLite Room e os pesos locais do Qwen são preservados durante a atualização.
+> **Auto-atualização inteligente Delta (`KDP1`):** quando conectado à internet, o Krono consulta automaticamente `https://krono.rafixx.com/api/releases.json` (intervalo automático de 6 horas ou manualmente em **Perfil > Atualizações do Krono**), valida a assinatura criptográfica **RSA-2048 (`SHA256withRSA`)** do manifesto, baixa apenas o patch binário `.kpatch` (reaproveitando blocos idênticos do APK instalado), valida o SHA-256 do patch e do APK reconstruído e verifica o certificado oficial pinado (`SHA-256`) antes de propor a instalação — com fallback automático para download resumível do APK completo caso necessário. O banco SQLite Room e os pesos locais do Qwen são preservados durante a atualização.
 
 ---
 
@@ -104,14 +105,16 @@ krono-lp/
 │   └── favicon.svg              # Ícone vetorial da marca Krono
 ├── src/
 │   ├── components/
-│   │   ├── PhoneShowcase.tsx    # Simulação interativa da interface do app Android
-│   │   └── ReleasesSection.tsx  # Seção de histórico de versões, downloads e documentação
-│   ├── App.tsx                  # Página principal da Landing Page
-│   ├── index.css                # Configuração Tailwind CSS e estilos globais
-│   ├── main.tsx                 # Ponto de entrada React
-│   └── types.ts                 # Tipagens TypeScript do manifesto releases.json
-├── Dockerfile                   # Build multi-stage Node -> Nginx
-├── nginx.conf                   # Configuração SPA, headers de /api/releases.json e redirect APK
+│   │   ├── InteractiveAppPreview.tsx  # Emulador interativo usável direto no navegador (#previa)
+│   │   ├── PhoneShowcase.tsx          # Simulação visual compacta no Hero
+│   │   └── ReleasesSection.tsx        # Seção de histórico de versões, downloads, SHA-256 e docs
+│   ├── App.tsx                        # Página principal da Landing Page
+│   ├── index.css                      # Configuração Tailwind CSS e estilos globais
+│   ├── main.tsx                       # Ponto de entrada React
+│   └── types.ts                       # Tipagens TypeScript do manifesto releases.json
+├── Dockerfile                         # Build multi-stage Node -> Nginx (webroot read-only)
+├── nginx.conf                         # SPA, rate limit, headers /api/releases.json e redirect APK
+├── security-headers.conf              # HSTS, CSP, X-Frame-Options, nosniff, Permissions-Policy
 ├── index.html                   # HTML raiz e metadados SEO
 ├── package.json                 # Scripts e dependências do projeto
 ├── tsconfig.json                # Configuração TypeScript
@@ -163,7 +166,7 @@ Acesse `http://localhost:8080` para testar a aplicação servida exatamente com 
 ### Como Publicar e Atualizar uma Nova Versão
 
 1. Crie uma nova release `vX.Y.Z` no GitHub anexando o `Krono-vX.Y.Z.apk` assinado e o(s) patch(es) delta `KDP1` (`.kpatch`) gerados a partir das versões anteriores.
-2. Atualize [`public/api/releases.json`](public/api/releases.json) preenchendo o objeto `latest` e adicionando a nova entrada ao topo do array `versions` (mantendo todas as versões anteriores intactas, com `apkSizeBytes`, `sha256`, `patches`, `changelog` e `documentation` exatos).
+2. Atualize [`public/api/releases.json`](public/api/releases.json) preenchendo o objeto `latest` e adicionando a nova entrada ao topo do array `versions` (mantendo todas as versões anteriores intactas, com `apkSizeBytes`, `sha256`, `patches`, `changelog` e `documentation` exatos) e execute o script de assinatura criptográfica do manifesto (`sign_manifest.py`) com a chave oficial para atualizar os campos `signatureAlg` (`SHA256withRSA`) e `signature`.
 3. Atualize o destino do redirect `/releases/latest/download/Krono-latest.apk` em [`nginx.conf`](nginx.conf).
 4. Atualize a tabela de downloads e o changelog neste `README.md`.
 5. Valide o build com `npm run build` e publique com `git push origin main` para disparar o deploy automático no Dokploy em [`https://krono.rafixx.com`](https://krono.rafixx.com/).

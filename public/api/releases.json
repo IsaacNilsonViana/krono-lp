@@ -68,7 +68,9 @@
           "Patch Delta v1.0.0 -> v1.1.0 SHA-256: 7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
         ]
       }
-    ]
+    ],
+    "signatureAlg": "SHA256withRSA",
+    "signature": "R/lDkYYF/Y6n51msfkM3/onpWCQc3M4cAcDZ/qRQqcTiStfE49NpkfjubTRNtf5lYYUjduJMZmmJCR9Bz2g2JUhQiWDKBrm047bnHG03mynB7Puez6Z62xXg1CVgDcspSn+4rur8Hft0EgA0qkgJ6VZyP3zMZet+70sI3wgS7EUm2O/Cv9eFn7PDpgW4mSOLk6117D0cjF8/SOCl1YMAkxgNcdHoSu3Yg+g+5g2GXk7FwZeh2KQs3qLromUoVCRCai2aQik5TCp7E7Fje5XaCEYSfc2r6wd3cFMML+KOIwkBAMpyFaOgOyD7vO7+lCGteMmCsxXw3+w2UGb5Jmnh4Q=="
   },
   "versions": [
     {
@@ -140,7 +142,9 @@
             "Patch Delta v1.0.0 -> v1.1.0 SHA-256: 7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
           ]
         }
-      ]
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "R/lDkYYF/Y6n51msfkM3/onpWCQc3M4cAcDZ/qRQqcTiStfE49NpkfjubTRNtf5lYYUjduJMZmmJCR9Bz2g2JUhQiWDKBrm047bnHG03mynB7Puez6Z62xXg1CVgDcspSn+4rur8Hft0EgA0qkgJ6VZyP3zMZet+70sI3wgS7EUm2O/Cv9eFn7PDpgW4mSOLk6117D0cjF8/SOCl1YMAkxgNcdHoSu3Yg+g+5g2GXk7FwZeh2KQs3qLromUoVCRCai2aQik5TCp7E7Fje5XaCEYSfc2r6wd3cFMML+KOIwkBAMpyFaOgOyD7vO7+lCGteMmCsxXw3+w2UGb5Jmnh4Q=="
     },
     {
       "versionCode": 1,
@@ -189,7 +193,9 @@
             "APK v1.0.0 SHA-256: 553806636f1bfc241fb1ef8787abd1c33dc3cd8ca66289a233779db3dc7e8ef2"
           ]
         }
-      ]
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "BDyDUyOf7c0MvLZa4PIVF1hwjGjqtB3QHfkpLQRZ4MxQ8dWL4ze6RkaNRCHejC+6TWg6043b0pr9tOiAMJVe0/pXCa/vzwuqNIIJQOyVaQWyVPLiG9P6rz8AVtC5yDSMMMtx6bjn0pXibiqOhvePQBX2g21o4NE50WRtMIK+CVEO8TxRqCwO72XGvn8wWtbhHmfbCTAgVnT63hvwKA0r6eS5C4c/pluzBGOx7k6+V6PnbHNzzEOJzI5j5WWB9fNU3JjRUrECTCKJRCLME2fPH99DJscJR2v73xaQ/kDrgZ8uYqNUWGF+3tE2HEjPhinimnb4AArPii5BI+bnMQkGjA=="
     }
   ]
 }

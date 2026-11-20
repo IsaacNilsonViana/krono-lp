@@ -17,6 +17,7 @@ import {
   Zap,
 } from 'lucide-react';
 import PhoneShowcase from './components/PhoneShowcase';
+import InteractiveAppPreview from './components/InteractiveAppPreview';
 import ReleasesSection from './components/ReleasesSection';
 import { ReleasesManifest } from './types';
 
@@ -106,6 +107,9 @@ const App: React.FC = () => {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-medium text-[#9BA6C7] md:flex">
+            <a href="#previa" className="transition hover:text-white">
+              Prévia ao vivo
+            </a>
             <a href="#recursos" className="transition hover:text-white">
               Recursos
             </a>
@@ -164,6 +168,14 @@ const App: React.FC = () => {
               </a>
 
               <a
+                href="#previa"
+                className="inline-flex items-center gap-2 rounded-2xl border border-[#00C2FF]/50 bg-[#141928] px-5 py-3.5 text-sm font-semibold text-[#00C2FF] transition hover:border-[#00C2FF] hover:bg-[#1C2338] sm:text-base"
+              >
+                <Sparkles className="h-4 w-4" />
+                Testar prévia ao vivo
+              </a>
+
+              <a
                 href="#versoes"
                 className="inline-flex items-center gap-2 rounded-2xl border border-[#28324F] bg-[#141928] px-5 py-3.5 text-sm font-semibold text-[#F6F8FF] transition hover:border-[#00C2FF] hover:text-[#00C2FF] sm:text-base"
               >
@@ -198,12 +210,15 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Interactive Browser Preview */}
+      <InteractiveAppPreview />
+
       {/* Feature Bento Grid */}
       <section id="recursos" className="border-t border-[#28324F]/70 py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="max-w-2xl">
             <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#7C5CFF]">
-              // OBISIDIAN ARCADE WORKFLOW
+              // OBSIDIAN ARCADE WORKFLOW
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Tudo o que importa no seu dia, sem nuvem obrigatória
@@ -383,8 +398,8 @@ const App: React.FC = () => {
                   },
                   {
                     step: '02',
-                    title: 'Patch Delta KDP1 + SHA-256 duplo',
-                    desc: 'Valida integridade do .kpatch, reconstrói o novo APK localmente e faz fallback para APK completo se necessário.',
+                    title: 'Assinatura RSA-2048 + SHA-256 duplo + Cert Pinning',
+                    desc: 'Valida assinatura RSA do manifesto, aplica o delta KDP1 com SHA-256 duplo e confere o certificado oficial do APK antes de instalar.',
                   },
                   {
                     step: '03',

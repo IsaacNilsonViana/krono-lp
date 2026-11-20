@@ -159,10 +159,15 @@ const ReleasesSection: React.FC<ReleasesSectionProps> = ({ versions, latestVersi
 
                 {/* SHA-256 verification strip */}
                 <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-[#28324F] bg-[#0B0E17] px-3.5 py-2.5">
-                  <div className="flex min-w-0 items-center gap-2 text-xs">
+                  <div className="flex min-w-0 flex-wrap items-center gap-2 text-xs">
                     <ShieldCheck className="h-4 w-4 shrink-0 text-[#00D68F]" />
                     <span className="font-mono text-[#667194]">SHA-256:</span>
                     <code className="truncate font-mono text-[#F6F8FF]">{rel.sha256}</code>
+                    {rel.signature && (
+                      <span className="rounded-full border border-[#00D68F]/40 bg-[#00D68F]/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-[#00D68F]">
+                        Assinado RSA-2048
+                      </span>
+                    )}
                   </div>
                   <button
                     type="button"
