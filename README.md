@@ -1,6 +1,6 @@
 # Krono — Landing Page, Hub de Releases e Auto-Atualização OTA
 
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-v1.3.0%20(build%204)-38BDF8?style=flat-square)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.3.0)
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-v1.4.0%20(build%205)-38BDF8?style=flat-square)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.4.0)
 [![Plataforma](https://img.shields.io/badge/Android-8.0%2B%20%C2%B7%20arm64--v8a-22C55E?style=flat-square)](https://krono.rafixx.com/#versoes)
 [![Site Oficial](https://img.shields.io/badge/Site%20Oficial-krono.rafixx.com-6366F1?style=flat-square)](https://krono.rafixx.com/)
 [![Releases](https://img.shields.io/badge/GitHub-Releases-181717?style=flat-square&logo=github)](https://github.com/IsaacNilsonViana/krono-lp/releases)
@@ -17,16 +17,17 @@ Este repositório (`krono-lp`) hospeda:
 
 ## Downloads
 
-> **Download direto da versão mais recente (`v1.3.0`):**
+> **Download direto da versão mais recente (`v1.4.0`):**
 > - **APK Latest (redirect oficial):** [`https://krono.rafixx.com/releases/latest/download/Krono-latest.apk`](https://krono.rafixx.com/releases/latest/download/Krono-latest.apk)
-> - **Release oficial `v1.3.0`:** [`https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.3.0)
+> - **Release oficial `v1.4.0`:** [`https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.4.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.4.0)
 > - **Landing Page com documentação interativa:** [`https://krono.rafixx.com/#versoes`](https://krono.rafixx.com/#versoes)
 
 ### Tabela Completa de Versões e Artefatos
 
 | Versão | Build | Data | Canal | APK Completo | Patch Delta (`KDP1`) |
 | --- | :---: | --- | --- | --- | --- |
-| [**`v1.3.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.3.0) | `4` | `2026-11-20` | `Latest / Produção` | [`Krono-v1.3.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.3.0.apk) (`22,41 MB` / `22.409.259 bytes`) | [`v1.2.0 -> v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.2.0-to-v1.3.0.kpatch) (`15,01 MB` / `-33,02%`) · [`v1.1.0 -> v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.1.0-to-v1.3.0.kpatch) (`15,01 MB` / `-33,02%`) · [`v1.0.0 -> v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.0.0-to-v1.3.0.kpatch) (`15,01 MB` / `-33,02%`) |
+| [**`v1.4.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.4.0) | `5` | `2026-11-20` | `Latest / Produção` | [`Krono-v1.4.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.4.0.apk) (`22,44 MB` / `22.442.023 bytes`) | [`v1.3.0 -> v1.4.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.3.0-to-v1.4.0.kpatch) (`3,33 MB` / `-85,15%`) · [`v1.2.0 -> v1.4.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.2.0-to-v1.4.0.kpatch) (`15,04 MB` / `-33,00%`) · [`v1.1.0 -> v1.4.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.1.0-to-v1.4.0.kpatch) (`15,04 MB` / `-33,00%`) · [`v1.0.0 -> v1.4.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.0.0-to-v1.4.0.kpatch) (`15,04 MB` / `-33,00%`) |
+| [**`v1.3.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.3.0) | `4` | `2026-11-20` | `Arquivo` | [`Krono-v1.3.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.3.0.apk) (`22,41 MB` / `22.409.259 bytes`) | [`v1.2.0 -> v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.2.0-to-v1.3.0.kpatch) (`15,01 MB` / `-33,02%`) · [`v1.1.0 -> v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.1.0-to-v1.3.0.kpatch) (`15,01 MB` / `-33,02%`) · [`v1.0.0 -> v1.3.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.0.0-to-v1.3.0.kpatch) (`15,01 MB` / `-33,02%`) |
 | [**`v1.2.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.2.0) | `3` | `2026-11-20` | `Arquivo` | [`Krono-v1.2.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk) (`20,41 MB` / `20.408.937 bytes`) | [`v1.1.0 -> v1.2.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch) (`13,10 MB` / `-35,8%`) · [`v1.0.0 -> v1.2.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.0.0-to-v1.2.0.kpatch) (`13,14 MB` / `-35,64%`) |
 | [**`v1.1.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0) | `2` | `2026-11-20` | `Arquivo` | [`Krono-v1.1.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk) (`20,39 MB` / `20.392.109 bytes`) | [`Krono-v1.0.0-to-v1.1.0.kpatch`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch) (`13,13 MB` / `13.126.734 bytes` — economia de `7,27 MB` / `35,63%`) |
 | [**`v1.0.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.0.0) | `1` | `2026-11-20` | `Arquivo` | [`Krono-v1.0.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.0.0/Krono-v1.0.0.apk) (`20,36 MB` / `20.358.761 bytes`) | — |
@@ -35,6 +36,11 @@ Este repositório (`krono-lp`) hospeda:
 
 | Arquivo | SHA-256 |
 | --- | --- |
+| `Krono-v1.4.0.apk` | `8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d` |
+| `Krono-v1.3.0-to-v1.4.0.kpatch` | `01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19` |
+| `Krono-v1.2.0-to-v1.4.0.kpatch` | `ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02` |
+| `Krono-v1.1.0-to-v1.4.0.kpatch` | `68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8` |
+| `Krono-v1.0.0-to-v1.4.0.kpatch` | `279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227` |
 | `Krono-v1.3.0.apk` | `f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1` |
 | `Krono-v1.2.0-to-v1.3.0.kpatch` | `647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9` |
 | `Krono-v1.1.0-to-v1.3.0.kpatch` | `edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c` |
@@ -49,8 +55,8 @@ Este repositório (`krono-lp`) hospeda:
 Exemplo de verificação local após baixar o APK:
 
 ```bash
-sha256sum Krono-v1.3.0.apk
-# Esperado: f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1
+sha256sum Krono-v1.4.0.apk
+# Esperado: 8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d
 ```
 
 ### Requisitos e Instalação no Android
@@ -59,7 +65,7 @@ sha256sum Krono-v1.3.0.apk
 - **Espaço adicional opcional:** ~2,1 GB livres caso deseje baixar os pesos do modelo `Qwen2.5-3B-Instruct (Q4_K_M)` dentro do próprio aplicativo (o **Modo Rápido** com voz PT-BR funciona imediatamente sem download extra).
 
 **Passo a passo de instalação:**
-1. Baixe [`Krono-v1.3.0.apk`](https://krono.rafixx.com/releases/latest/download/Krono-latest.apk) no dispositivo Android.
+1. Baixe [`Krono-v1.4.0.apk`](https://krono.rafixx.com/releases/latest/download/Krono-latest.apk) no dispositivo Android.
 2. Ao abrir o arquivo, habilite a permissão **Instalar apps desconhecidos** para o navegador/gerenciador de arquivos, se solicitado.
 3. Confirme a instalação.
 
@@ -68,6 +74,14 @@ sha256sum Krono-v1.3.0.apk
 ---
 
 ## Changelog de Versões
+
+### [`v1.4.0` (build 5)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.4.0) — `2026-11-20`
+
+#### Melhorias de UI & Navegação
+- **Dock inferior expansível (`FloatingBottomDock`)**: barra recolhida exibe apenas os **4 ícones principais**, com indicador `▲ <Aba>` quando estiver em módulo secundário; puxar para cima ou tocar na alça expande a grade com todos os módulos.
+- **Remanejamento persistente (`DockOrderEngine` + Room v6)**: segure qualquer ícone ou toque em **Reorganizar** para permutar módulos por dois toques, mover (`◀` / `▶`), fixar/ocultar nos 4 principais ou restaurar o **Padrão** (`MIGRATION_5_6`, incluído no backup JSON).
+
+---
 
 ### [`v1.3.0` (build 4)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.3.0) — `2026-11-20`
 

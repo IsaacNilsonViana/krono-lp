@@ -1,93 +1,176 @@
 {
   "latest": {
-    "versionCode": 4,
-    "versionName": "1.3.0",
+    "versionCode": 5,
+    "versionName": "1.4.0",
     "releasedAt": "2026-11-20",
     "channel": "production",
-    "summary": "Novo Módulo de Mercado 100% offline com scanner de código de barras (CameraX + ZXing), cadastro de produtos, exibição imediata do último preço pago ao recomprar, comparativo de economia e histórico completo item a item.",
+    "summary": "Nova barra inferior inteligente com apenas 4 ícones principais visíveis, gesto de puxar para cima para revelar todos os módulos e remanejamento completo persistido em Room v6.",
     "highlights": [
-      "Novo Módulo de Mercado na aba inferior e atalho rápido no Dashboard",
-      "Scanner de código de barras offline (EAN-13, EAN-8, UPC, Code-128, QR) com lanterna",
-      "Exibição automática do último preço pago + diferença em R$ e % ao escanear novamente",
-      "Histórico de compras concluídas (gasto mensal, ticket médio e recibos) em Room v5"
+      "Dock inferior enxuto com apenas 4 atalhos principais visíveis",
+      "Puxar para cima (ou tocar na alça) expande a grade com todos os módulos",
+      "Remanejamento persistente por toque, ajuste fino (◀ / ▶) e botão Padrão",
+      "Patch delta v1.3.0 -> v1.4.0 com apenas 3,33 MB (-85,15%)"
     ],
     "changelog": [
-      "Módulo completo de Mercado offline com 3 sub-abas: Compra Atual, Histórico e Produtos",
-      "Scanner de código de barras offline usando CameraX 1.4.2 + ZXing Core 3.5.3 com suporte a orientação retrato/paisagem, lanterna e entrada manual",
-      "Detecção instantânea de produto cadastrado exibindo Último preço pago, data, supermercado, menor valor histórico e comparação ao vivo",
-      "Histórico de compras com resumo mensal (Total gasto, Compras, Ticket médio), recibo completo de itens e ficha evolutiva por produto (Último, Menor, Maior, Média)",
-      "Migração segura Room v4 -> v5 (market_products, market_trips e market_purchase_items) com recálculo automático ao excluir compras",
-      "Suporte completo das tabelas de Mercado na exportação e importação do backup JSON offline"
+      "Dock inferior expansível (FloatingBottomDock) mostrando 4 módulos principais quando recolhido e grade completa ao puxar para cima",
+      "Indicador ▲ <Aba ativa> na alça sempre que a tela atual estiver fora dos 4 atalhos principais",
+      "Modo Reorganizar ativado por toque longo em qualquer ícone ou botão dedicado com troca por dois toques, mover ◀ / ▶ e Fixar nos 4 / Ocultar",
+      "Motor determinístico DockOrderEngine com deduplicação e inclusão automática de futuras abas",
+      "Migração segura Room v5 -> v6 (MIGRATION_5_6 adicionando user_settings.dockTabOrderCsv) preservada no backup JSON offline"
     ],
-    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.3.0.apk",
-    "apkSizeBytes": 22409259,
-    "sha256": "f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1",
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.4.0.apk",
+    "apkSizeBytes": 22442023,
+    "sha256": "8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d",
     "minSdk": 26,
     "abi": "arm64-v8a",
     "patches": [
       {
+        "fromVersionCode": 4,
+        "fromVersionName": "1.3.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.3.0-to-v1.4.0.kpatch",
+        "patchSizeBytes": 3331861,
+        "patchSha256": "01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19"
+      },
+      {
         "fromVersionCode": 3,
         "fromVersionName": "1.2.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.2.0-to-v1.3.0.kpatch",
-        "patchSizeBytes": 15010374,
-        "patchSha256": "647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.2.0-to-v1.4.0.kpatch",
+        "patchSizeBytes": 15035569,
+        "patchSha256": "ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02"
       },
       {
         "fromVersionCode": 2,
         "fromVersionName": "1.1.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.1.0-to-v1.3.0.kpatch",
-        "patchSizeBytes": 15010734,
-        "patchSha256": "edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.1.0-to-v1.4.0.kpatch",
+        "patchSizeBytes": 15035824,
+        "patchSha256": "68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8"
       },
       {
         "fromVersionCode": 1,
         "fromVersionName": "1.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.0.0-to-v1.3.0.kpatch",
-        "patchSizeBytes": 15010812,
-        "patchSha256": "bafc5f8a6a275709d06e3ad592eae57add26a5b91506874ddc5f4180aff2e4fd"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.0.0-to-v1.4.0.kpatch",
+        "patchSizeBytes": 15035885,
+        "patchSha256": "279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227"
       }
     ],
     "documentation": [
       {
-        "title": "Módulo de Mercado & Comparativo de Preços",
+        "title": "Dock Expansível (4 Principais + Puxar para Ver Tudo)",
         "items": [
-          "Gerenciamento completo de compras em Compra Atual (carrinho ativo com total em R$, diferença vs último preço pago e supermercado), Histórico (resumo mensal e recibos) e Produtos (catálogo com estatísticas).",
-          "MarketPricingEngine executa cálculos monetários inteiros em centavos (Long) para evitar imprecisões decimais em quantidades fracionadas (kg, g, L, ml)."
+          "FloatingBottomDock recolhido mostra apenas os 4 primeiros atalhos configurados (PRIMARY_DOCK_SLOT_COUNT = 4) com área tátil de alça e badge ▲ <Aba> quando o usuário está em um módulo secundário.",
+          "Gesto vertical detectVerticalDragGestures (> 24 dp) abre a gaveta sobre scrim semitransparente; arrastar para baixo, tocar fora ou apertar Voltar recolhe."
         ]
       },
       {
-        "title": "Scanner Offline CameraX + ZXing",
+        "title": "Remanejamento Persistente (DockOrderEngine + Room v6)",
         "items": [
-          "Lê EAN-13, EAN-8, UPC-A, UPC-E, CODE-128, CODE-39, ITF e QR_CODE direto no dispositivo sem depender do Google Play Services nem conexão de rede.",
-          "BarcodeDecoder processa frames YUV respeitando rowStride em orientação original e rotacionada em 90 graus para leitura rápida em pé."
-        ]
-      },
-      {
-        "title": "Banco Room v5 & Backup",
-        "items": [
-          "MIGRATION_4_5 cria market_products (barcode único), market_trips e market_purchase_items preservando todas as tarefas, metas, notas, sessões de foco e memórias da IA.",
-          "Inclusão completa das tabelas de Mercado no backup/restauração em arquivo JSON offline."
+          "Segurar qualquer ícone ou tocar em Reorganizar ativa o modo de edição com troca por 2 toques, setas ◀ / ▶, Fixar nos 4 / Ocultar e botão Padrão.",
+          "MIGRATION_5_6 adiciona user_settings.dockTabOrderCsv preservando integralmente dados anteriores e garantindo exportação/restauração no backup JSON."
         ]
       },
       {
         "title": "Checksums & Patches Delta",
         "items": [
-          "APK v1.3.0 SHA-256: f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1",
-          "Delta v1.2.0 -> v1.3.0 SHA-256: 647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9 (15.010.374 bytes, -33,02%)",
-          "Delta v1.1.0 -> v1.3.0 SHA-256: edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c (15.010.734 bytes, -33,02%)",
-          "Delta v1.0.0 -> v1.3.0 SHA-256: bafc5f8a6a275709d06e3ad592eae57add26a5b91506874ddc5f4180aff2e4fd (15.010.812 bytes, -33,02%)"
+          "APK v1.4.0 SHA-256: 8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d",
+          "Delta v1.3.0 -> v1.4.0 SHA-256: 01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19 (3.331.861 bytes, -85,15%)",
+          "Delta v1.2.0 -> v1.4.0 SHA-256: ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02 (15.035.569 bytes, -33,00%)",
+          "Delta v1.1.0 -> v1.4.0 SHA-256: 68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8 (15.035.824 bytes, -33,00%)",
+          "Delta v1.0.0 -> v1.4.0 SHA-256: 279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227 (15.035.885 bytes, -33,00%)"
         ]
       }
     ],
     "signatureAlg": "SHA256withRSA",
-    "signature": "WLMSZuyJvm9/fypc7VMHv/5yqR47TVC2cROux/h3qsWOqF1t67o45SWJDwWmSbWil6jad3Va9x2dhE/5rW2WDAzElvVMjiucM6S5Tbc+0MkIc+NrX2GukrGktGtDBci04tyKsSRmhApm9Ref6cLLLy7oAT0cNqclazVP8kphHfhaYM4GLgdct+BdJzHF30wR6UAFdOagENkFu1ll8hzL38wL6w38AJlhMiCycvKTGdBllkcq4XLDHVUQqTEKQmgEbaRgSQOK+81Z9/ncat0b57h4bea29dKBfMcKW/AuB/L4Hgaln0FmX4mUTHlE6r4vb1bIDX5+3L/wWAbCM467sg=="
+    "signature": "AiLXdQsBo26tEG1CdX5paQ4BdzUEVYUpAwz43VEMvG000cRCTn052/N19D2tkylwXwUVW1BP+8IQ1qzGLEJR9vxpXETdRBh3pQFTIs0cdVuCvBnwH2WmrFtbxkqDCeRaTmri57dE7Fh7Us8s+fssPOI4k5xCrGE7gn7Hle34sX/soA0lMk5nbg2vxR20H/5A86i9I6tTXQP02Wbe4gbQP4SPcH1R4GR7hkHRxRrUGgQVGvbDGH7r8Zi+ZyGdq8gpINs1HhW/7XLx/I+Bleut877hMSP0td4aHKgIqHEGtzs2vz22xeP0Kv0Tu37G57UManb5+wf9q6qdOaldXkvHgw=="
   },
   "versions": [
+    {
+      "versionCode": 5,
+      "versionName": "1.4.0",
+      "releasedAt": "2026-11-20",
+      "channel": "production",
+      "summary": "Nova barra inferior inteligente com apenas 4 ícones principais visíveis, gesto de puxar para cima para revelar todos os módulos e remanejamento completo persistido em Room v6.",
+      "highlights": [
+        "Dock inferior enxuto com apenas 4 atalhos principais visíveis",
+        "Puxar para cima (ou tocar na alça) expande a grade com todos os módulos",
+        "Remanejamento persistente por toque, ajuste fino (◀ / ▶) e botão Padrão",
+        "Patch delta v1.3.0 -> v1.4.0 com apenas 3,33 MB (-85,15%)"
+      ],
+      "changelog": [
+        "Dock inferior expansível (FloatingBottomDock) mostrando 4 módulos principais quando recolhido e grade completa ao puxar para cima",
+        "Indicador ▲ <Aba ativa> na alça sempre que a tela atual estiver fora dos 4 atalhos principais",
+        "Modo Reorganizar ativado por toque longo em qualquer ícone ou botão dedicado com troca por dois toques, mover ◀ / ▶ e Fixar nos 4 / Ocultar",
+        "Motor determinístico DockOrderEngine com deduplicação e inclusão automática de futuras abas",
+        "Migração segura Room v5 -> v6 (MIGRATION_5_6 adicionando user_settings.dockTabOrderCsv) preservada no backup JSON offline"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.4.0.apk",
+      "apkSizeBytes": 22442023,
+      "sha256": "8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "patches": [
+        {
+          "fromVersionCode": 4,
+          "fromVersionName": "1.3.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.3.0-to-v1.4.0.kpatch",
+          "patchSizeBytes": 3331861,
+          "patchSha256": "01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19"
+        },
+        {
+          "fromVersionCode": 3,
+          "fromVersionName": "1.2.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.2.0-to-v1.4.0.kpatch",
+          "patchSizeBytes": 15035569,
+          "patchSha256": "ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02"
+        },
+        {
+          "fromVersionCode": 2,
+          "fromVersionName": "1.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.1.0-to-v1.4.0.kpatch",
+          "patchSizeBytes": 15035824,
+          "patchSha256": "68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8"
+        },
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.0.0-to-v1.4.0.kpatch",
+          "patchSizeBytes": 15035885,
+          "patchSha256": "279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Dock Expansível (4 Principais + Puxar para Ver Tudo)",
+          "items": [
+            "FloatingBottomDock recolhido mostra apenas os 4 primeiros atalhos configurados (PRIMARY_DOCK_SLOT_COUNT = 4) com área tátil de alça e badge ▲ <Aba> quando o usuário está em um módulo secundário.",
+            "Gesto vertical detectVerticalDragGestures (> 24 dp) abre a gaveta sobre scrim semitransparente; arrastar para baixo, tocar fora ou apertar Voltar recolhe."
+          ]
+        },
+        {
+          "title": "Remanejamento Persistente (DockOrderEngine + Room v6)",
+          "items": [
+            "Segurar qualquer ícone ou tocar em Reorganizar ativa o modo de edição com troca por 2 toques, setas ◀ / ▶, Fixar nos 4 / Ocultar e botão Padrão.",
+            "MIGRATION_5_6 adiciona user_settings.dockTabOrderCsv preservando integralmente dados anteriores e garantindo exportação/restauração no backup JSON."
+          ]
+        },
+        {
+          "title": "Checksums & Patches Delta",
+          "items": [
+            "APK v1.4.0 SHA-256: 8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d",
+            "Delta v1.3.0 -> v1.4.0 SHA-256: 01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19 (3.331.861 bytes, -85,15%)",
+            "Delta v1.2.0 -> v1.4.0 SHA-256: ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02 (15.035.569 bytes, -33,00%)",
+            "Delta v1.1.0 -> v1.4.0 SHA-256: 68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8 (15.035.824 bytes, -33,00%)",
+            "Delta v1.0.0 -> v1.4.0 SHA-256: 279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227 (15.035.885 bytes, -33,00%)"
+          ]
+        }
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "AiLXdQsBo26tEG1CdX5paQ4BdzUEVYUpAwz43VEMvG000cRCTn052/N19D2tkylwXwUVW1BP+8IQ1qzGLEJR9vxpXETdRBh3pQFTIs0cdVuCvBnwH2WmrFtbxkqDCeRaTmri57dE7Fh7Us8s+fssPOI4k5xCrGE7gn7Hle34sX/soA0lMk5nbg2vxR20H/5A86i9I6tTXQP02Wbe4gbQP4SPcH1R4GR7hkHRxRrUGgQVGvbDGH7r8Zi+ZyGdq8gpINs1HhW/7XLx/I+Bleut877hMSP0td4aHKgIqHEGtzs2vz22xeP0Kv0Tu37G57UManb5+wf9q6qdOaldXkvHgw=="
+    },
     {
       "versionCode": 4,
       "versionName": "1.3.0",
       "releasedAt": "2026-11-20",
-      "channel": "production",
+      "channel": "archive",
       "summary": "Novo Módulo de Mercado 100% offline com scanner de código de barras (CameraX + ZXing), cadastro de produtos, exibição imediata do último preço pago ao recomprar, comparativo de economia e histórico completo item a item.",
       "highlights": [
         "Novo Módulo de Mercado na aba inferior e atalho rápido no Dashboard",
