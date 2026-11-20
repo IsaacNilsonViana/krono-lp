@@ -1,93 +1,206 @@
 {
   "latest": {
-    "versionCode": 5,
-    "versionName": "1.4.0",
+    "versionCode": 6,
+    "versionName": "1.5.0",
     "releasedAt": "2026-11-20",
     "channel": "production",
-    "summary": "Nova barra inferior inteligente com apenas 4 ícones principais visíveis, gesto de puxar para cima para revelar todos os módulos e remanejamento completo persistido em Room v6.",
+    "summary": "Nova Área Financeira 100% offline com receitas/despesas, contas mensais, parcelamento em até 36x, OCR no aparelho para boletos e comprovantes (imagens e PDFs), calendário de vencimentos, simulador de compras e lembretes locais.",
     "highlights": [
-      "Dock inferior enxuto com apenas 4 atalhos principais visíveis",
-      "Puxar para cima (ou tocar na alça) expande a grade com todos os módulos",
-      "Remanejamento persistente por toque, ajuste fino (◀ / ▶) e botão Padrão",
-      "Patch delta v1.3.0 -> v1.4.0 com apenas 3,33 MB (-85,15%)"
+      "Módulo Financeiro offline completo com Resumo, Calendário, Simulador e Ajustes",
+      "OCR on-device para boletos, comprovantes Pix e cupons em imagem ou PDF (até 5 páginas)",
+      "Contas mensais recorrentes, parcelamentos 1x..36x com centavos exatos e controle por parcela",
+      "Lembretes locais configuráveis (0..3 dias antes) + Room v7 e Backup JSON"
     ],
     "changelog": [
-      "Dock inferior expansível (FloatingBottomDock) mostrando 4 módulos principais quando recolhido e grade completa ao puxar para cima",
-      "Indicador ▲ <Aba ativa> na alça sempre que a tela atual estiver fora dos 4 atalhos principais",
-      "Modo Reorganizar ativado por toque longo em qualquer ícone ou botão dedicado com troca por dois toques, mover ◀ / ▶ e Fixar nos 4 / Ocultar",
-      "Motor determinístico DockOrderEngine com deduplicação e inclusão automática de futuras abas",
-      "Migração segura Room v5 -> v6 (MIGRATION_5_6 adicionando user_settings.dockTabOrderCsv) preservada no backup JSON offline"
+      "Novo módulo Finanças (KronoTab.FINANCE) integrado ao Tema Obsidian Arcade, ao dock expansível e ao card Finanças do Mês no Dashboard",
+      "Controle de receitas e despesas com sugestão automática de categoria, contas recorrentes mensais e parcelamentos em até 36x com arredondamento exato dos centavos",
+      "Anexos separados para boleto e comprovante guardados no armazenamento privado (files/finance_attachments/) com leitura OCR offline via ML Kit + PdfRenderer",
+      "Calendário mensal interativo de vencimentos e simulador de compras futuras sem alterar os lançamentos salvos",
+      "Notificações locais às 09:00 de 0 a 3 dias antes do vencimento, migração segura Room v6 -> v7 (MIGRATION_6_7) e backup/restauração JSON"
     ],
-    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.4.0.apk",
-    "apkSizeBytes": 22442023,
-    "sha256": "8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d",
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.5.0.apk",
+    "apkSizeBytes": 35828261,
+    "sha256": "36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0",
     "minSdk": 26,
     "abi": "arm64-v8a",
     "patches": [
       {
+        "fromVersionCode": 5,
+        "fromVersionName": "1.4.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.4.0-to-v1.5.0.kpatch",
+        "patchSizeBytes": 21333209,
+        "patchSha256": "f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9"
+      },
+      {
         "fromVersionCode": 4,
         "fromVersionName": "1.3.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.3.0-to-v1.4.0.kpatch",
-        "patchSizeBytes": 3331861,
-        "patchSha256": "01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.3.0-to-v1.5.0.kpatch",
+        "patchSizeBytes": 21333160,
+        "patchSha256": "7d9a0b37108607f2e871b623b82d95d09a17d8b3fab12202b0dc94883f6284e2"
       },
       {
         "fromVersionCode": 3,
         "fromVersionName": "1.2.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.2.0-to-v1.4.0.kpatch",
-        "patchSizeBytes": 15035569,
-        "patchSha256": "ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.2.0-to-v1.5.0.kpatch",
+        "patchSizeBytes": 21391264,
+        "patchSha256": "c1b926cc33d2309f0b2849a58d9bf23a69396dbf4af62fdeb35f31ac105005bf"
       },
       {
         "fromVersionCode": 2,
         "fromVersionName": "1.1.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.1.0-to-v1.4.0.kpatch",
-        "patchSizeBytes": 15035824,
-        "patchSha256": "68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.1.0-to-v1.5.0.kpatch",
+        "patchSizeBytes": 21390893,
+        "patchSha256": "8097d71cbebf6aae3c1fc5fabed24dbbe69f427a42ef2b8adc0e332a84866c66"
       },
       {
         "fromVersionCode": 1,
         "fromVersionName": "1.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.0.0-to-v1.4.0.kpatch",
-        "patchSizeBytes": 15035885,
-        "patchSha256": "279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.0.0-to-v1.5.0.kpatch",
+        "patchSizeBytes": 21390189,
+        "patchSha256": "c4131a5b38e7e0e43cdd312e2d5e9116abf9de3bdf4a1a62dabdbd3267bf48f1"
       }
     ],
     "documentation": [
       {
-        "title": "Dock Expansível (4 Principais + Puxar para Ver Tudo)",
+        "title": "Gestão Financeira Offline, Parcelas & Simulador",
         "items": [
-          "FloatingBottomDock recolhido mostra apenas os 4 primeiros atalhos configurados (PRIMARY_DOCK_SLOT_COUNT = 4) com área tátil de alça e badge ▲ <Aba> quando o usuário está em um módulo secundário.",
-          "Gesto vertical detectVerticalDragGestures (> 24 dp) abre a gaveta sobre scrim semitransparente; arrastar para baixo, tocar fora ou apertar Voltar recolhe."
+          "FinanceEngine controla receitas, despesas, recorrências mensais e compras em até 36x preservando soma exata dos centavos e ajustando vencimentos de fim de mês.",
+          "Cada ocorrência mantém status Pago/Recebido, data de pagamento e comprovante independentes, além de simulador mensal que projeta o impacto de compras futuras sem alterar os dados reais."
         ]
       },
       {
-        "title": "Remanejamento Persistente (DockOrderEngine + Room v6)",
+        "title": "OCR On-Device (Boletos, Pix & PDFs)",
         "items": [
-          "Segurar qualquer ícone ou tocar em Reorganizar ativa o modo de edição com troca por 2 toques, setas ◀ / ▶, Fixar nos 4 / Ocultar e botão Padrão.",
-          "MIGRATION_5_6 adiciona user_settings.dockTabOrderCsv preservando integralmente dados anteriores e garantindo exportação/restauração no backup JSON."
+          "FinanceAttachmentManager copia arquivos selecionados ou fotos da câmera para files/finance_attachments/ e executa ML Kit Text Recognition localmente (incluindo PdfRenderer até 5 páginas).",
+          "FinanceDocumentParser identifica estabelecimento/beneficiário, valor total, datas de vencimento/pagamento, categoria sugerida e detalhes de itens, encargos e descontos para revisão."
+        ]
+      },
+      {
+        "title": "Room v7, Backup JSON & Lembretes Locais",
+        "items": [
+          "MIGRATION_6_7 cria finance_entries e campos financeNotificationsEnabled/financeReminderDaysBefore em user_settings mantendo todos os dados existentes e integrando com BackupManager.",
+          "ReminderScheduler / ReminderReceiver disparam notificações locais de vencimento às 09:00 com antecedência configurável de 0 a 3 dias."
         ]
       },
       {
         "title": "Checksums & Patches Delta",
         "items": [
-          "APK v1.4.0 SHA-256: 8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d",
-          "Delta v1.3.0 -> v1.4.0 SHA-256: 01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19 (3.331.861 bytes, -85,15%)",
-          "Delta v1.2.0 -> v1.4.0 SHA-256: ddb717f470ed213723e1b5ba3034c401cb1938aefaa986d963adc70a27408f02 (15.035.569 bytes, -33,00%)",
-          "Delta v1.1.0 -> v1.4.0 SHA-256: 68085db4e721fd631c90be925c2b967a1b9ef09faf92606faf7e3fe100a75ce8 (15.035.824 bytes, -33,00%)",
-          "Delta v1.0.0 -> v1.4.0 SHA-256: 279e86a22d4942a9476919b1cd2977ad4a7693d84678e54dddec0ad9f7aef227 (15.035.885 bytes, -33,00%)"
+          "APK v1.5.0 SHA-256: 36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0",
+          "Delta v1.4.0 -> v1.5.0 SHA-256: f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9 (21.333.209 bytes, -40,46%)",
+          "Delta v1.3.0 -> v1.5.0 SHA-256: 7d9a0b37108607f2e871b623b82d95d09a17d8b3fab12202b0dc94883f6284e2 (21.333.160 bytes, -40,46%)",
+          "Delta v1.2.0 -> v1.5.0 SHA-256: c1b926cc33d2309f0b2849a58d9bf23a69396dbf4af62fdeb35f31ac105005bf (21.391.264 bytes, -40,29%)",
+          "Delta v1.1.0 -> v1.5.0 SHA-256: 8097d71cbebf6aae3c1fc5fabed24dbbe69f427a42ef2b8adc0e332a84866c66 (21.390.893 bytes, -40,30%)",
+          "Delta v1.0.0 -> v1.5.0 SHA-256: c4131a5b38e7e0e43cdd312e2d5e9116abf9de3bdf4a1a62dabdbd3267bf48f1 (21.390.189 bytes, -40,30%)"
         ]
       }
     ],
     "signatureAlg": "SHA256withRSA",
-    "signature": "AiLXdQsBo26tEG1CdX5paQ4BdzUEVYUpAwz43VEMvG000cRCTn052/N19D2tkylwXwUVW1BP+8IQ1qzGLEJR9vxpXETdRBh3pQFTIs0cdVuCvBnwH2WmrFtbxkqDCeRaTmri57dE7Fh7Us8s+fssPOI4k5xCrGE7gn7Hle34sX/soA0lMk5nbg2vxR20H/5A86i9I6tTXQP02Wbe4gbQP4SPcH1R4GR7hkHRxRrUGgQVGvbDGH7r8Zi+ZyGdq8gpINs1HhW/7XLx/I+Bleut877hMSP0td4aHKgIqHEGtzs2vz22xeP0Kv0Tu37G57UManb5+wf9q6qdOaldXkvHgw=="
+    "signature": "P2BtA0XzzIv9ySvOWzAz+ZNrFBg3qkc4JdbQetnnJLk+E1WEExZKjlCKRnjx9MmJVWIzTROoqg1hQy8hg0ws7dGI8/Ic4bA9lKm6tw/5czrxXjzkdJFb5GeonNRX/7ja3oCBSeHCI8RFd/UuVlw9f/gMjeSDujUtVKhOtRlExoxmiliucl2QqdcJnBoDJUh45+tFYprI4sC+IdVQXKBZmUJIyqlpzjfnqI2vuF4xPpgVmRFcnoqHrSetzwE7iKTzZU+F8Lz7ecAPjkxRTm5xm7os+nPlRqc0hOaeFzf5eQglg9ec+MeEZa/aUSLXGmieyXN3/sV/BQPP+mXSPKi2Mg=="
   },
   "versions": [
+    {
+      "versionCode": 6,
+      "versionName": "1.5.0",
+      "releasedAt": "2026-11-20",
+      "channel": "production",
+      "summary": "Nova Área Financeira 100% offline com receitas/despesas, contas mensais, parcelamento em até 36x, OCR no aparelho para boletos e comprovantes (imagens e PDFs), calendário de vencimentos, simulador de compras e lembretes locais.",
+      "highlights": [
+        "Módulo Financeiro offline completo com Resumo, Calendário, Simulador e Ajustes",
+        "OCR on-device para boletos, comprovantes Pix e cupons em imagem ou PDF (até 5 páginas)",
+        "Contas mensais recorrentes, parcelamentos 1x..36x com centavos exatos e controle por parcela",
+        "Lembretes locais configuráveis (0..3 dias antes) + Room v7 e Backup JSON"
+      ],
+      "changelog": [
+        "Novo módulo Finanças (KronoTab.FINANCE) integrado ao Tema Obsidian Arcade, ao dock expansível e ao card Finanças do Mês no Dashboard",
+        "Controle de receitas e despesas com sugestão automática de categoria, contas recorrentes mensais e parcelamentos em até 36x com arredondamento exato dos centavos",
+        "Anexos separados para boleto e comprovante guardados no armazenamento privado (files/finance_attachments/) com leitura OCR offline via ML Kit + PdfRenderer",
+        "Calendário mensal interativo de vencimentos e simulador de compras futuras sem alterar os lançamentos salvos",
+        "Notificações locais às 09:00 de 0 a 3 dias antes do vencimento, migração segura Room v6 -> v7 (MIGRATION_6_7) e backup/restauração JSON"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.5.0.apk",
+      "apkSizeBytes": 35828261,
+      "sha256": "36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "patches": [
+        {
+          "fromVersionCode": 5,
+          "fromVersionName": "1.4.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.4.0-to-v1.5.0.kpatch",
+          "patchSizeBytes": 21333209,
+          "patchSha256": "f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9"
+        },
+        {
+          "fromVersionCode": 4,
+          "fromVersionName": "1.3.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.3.0-to-v1.5.0.kpatch",
+          "patchSizeBytes": 21333160,
+          "patchSha256": "7d9a0b37108607f2e871b623b82d95d09a17d8b3fab12202b0dc94883f6284e2"
+        },
+        {
+          "fromVersionCode": 3,
+          "fromVersionName": "1.2.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.2.0-to-v1.5.0.kpatch",
+          "patchSizeBytes": 21391264,
+          "patchSha256": "c1b926cc33d2309f0b2849a58d9bf23a69396dbf4af62fdeb35f31ac105005bf"
+        },
+        {
+          "fromVersionCode": 2,
+          "fromVersionName": "1.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.1.0-to-v1.5.0.kpatch",
+          "patchSizeBytes": 21390893,
+          "patchSha256": "8097d71cbebf6aae3c1fc5fabed24dbbe69f427a42ef2b8adc0e332a84866c66"
+        },
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.0.0-to-v1.5.0.kpatch",
+          "patchSizeBytes": 21390189,
+          "patchSha256": "c4131a5b38e7e0e43cdd312e2d5e9116abf9de3bdf4a1a62dabdbd3267bf48f1"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Gestão Financeira Offline, Parcelas & Simulador",
+          "items": [
+            "FinanceEngine controla receitas, despesas, recorrências mensais e compras em até 36x preservando soma exata dos centavos e ajustando vencimentos de fim de mês.",
+            "Cada ocorrência mantém status Pago/Recebido, data de pagamento e comprovante independentes, além de simulador mensal que projeta o impacto de compras futuras sem alterar os dados reais."
+          ]
+        },
+        {
+          "title": "OCR On-Device (Boletos, Pix & PDFs)",
+          "items": [
+            "FinanceAttachmentManager copia arquivos selecionados ou fotos da câmera para files/finance_attachments/ e executa ML Kit Text Recognition localmente (incluindo PdfRenderer até 5 páginas).",
+            "FinanceDocumentParser identifica estabelecimento/beneficiário, valor total, datas de vencimento/pagamento, categoria sugerida e detalhes de itens, encargos e descontos para revisão."
+          ]
+        },
+        {
+          "title": "Room v7, Backup JSON & Lembretes Locais",
+          "items": [
+            "MIGRATION_6_7 cria finance_entries e campos financeNotificationsEnabled/financeReminderDaysBefore em user_settings mantendo todos os dados existentes e integrando com BackupManager.",
+            "ReminderScheduler / ReminderReceiver disparam notificações locais de vencimento às 09:00 com antecedência configurável de 0 a 3 dias."
+          ]
+        },
+        {
+          "title": "Checksums & Patches Delta",
+          "items": [
+            "APK v1.5.0 SHA-256: 36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0",
+            "Delta v1.4.0 -> v1.5.0 SHA-256: f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9 (21.333.209 bytes, -40,46%)",
+            "Delta v1.3.0 -> v1.5.0 SHA-256: 7d9a0b37108607f2e871b623b82d95d09a17d8b3fab12202b0dc94883f6284e2 (21.333.160 bytes, -40,46%)",
+            "Delta v1.2.0 -> v1.5.0 SHA-256: c1b926cc33d2309f0b2849a58d9bf23a69396dbf4af62fdeb35f31ac105005bf (21.391.264 bytes, -40,29%)",
+            "Delta v1.1.0 -> v1.5.0 SHA-256: 8097d71cbebf6aae3c1fc5fabed24dbbe69f427a42ef2b8adc0e332a84866c66 (21.390.893 bytes, -40,30%)",
+            "Delta v1.0.0 -> v1.5.0 SHA-256: c4131a5b38e7e0e43cdd312e2d5e9116abf9de3bdf4a1a62dabdbd3267bf48f1 (21.390.189 bytes, -40,30%)"
+          ]
+        }
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "P2BtA0XzzIv9ySvOWzAz+ZNrFBg3qkc4JdbQetnnJLk+E1WEExZKjlCKRnjx9MmJVWIzTROoqg1hQy8hg0ws7dGI8/Ic4bA9lKm6tw/5czrxXjzkdJFb5GeonNRX/7ja3oCBSeHCI8RFd/UuVlw9f/gMjeSDujUtVKhOtRlExoxmiliucl2QqdcJnBoDJUh45+tFYprI4sC+IdVQXKBZmUJIyqlpzjfnqI2vuF4xPpgVmRFcnoqHrSetzwE7iKTzZU+F8Lz7ecAPjkxRTm5xm7os+nPlRqc0hOaeFzf5eQglg9ec+MeEZa/aUSLXGmieyXN3/sV/BQPP+mXSPKi2Mg=="
+    },
     {
       "versionCode": 5,
       "versionName": "1.4.0",
       "releasedAt": "2026-11-20",
-      "channel": "production",
+      "channel": "archive",
       "summary": "Nova barra inferior inteligente com apenas 4 ícones principais visíveis, gesto de puxar para cima para revelar todos os módulos e remanejamento completo persistido em Room v6.",
       "highlights": [
         "Dock inferior enxuto com apenas 4 atalhos principais visíveis",

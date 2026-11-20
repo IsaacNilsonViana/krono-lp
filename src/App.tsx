@@ -23,31 +23,31 @@ import { ReleasesManifest } from './types';
 
 const FALLBACK_MANIFEST: ReleasesManifest = {
   latest: {
-    versionCode: 5,
-    versionName: '1.4.0',
+    versionCode: 6,
+    versionName: '1.5.0',
     releasedAt: '2026-11-20',
     channel: 'production',
     summary:
-      'Nova barra inferior inteligente com apenas 4 ícones principais visíveis, gesto de puxar para cima para revelar todos os módulos e remanejamento completo persistido em Room v6.',
+      'Nova Área Financeira 100% offline com receitas/despesas, contas mensais, parcelamento em até 36x, OCR no aparelho para boletos e comprovantes (imagens e PDFs), calendário de vencimentos, simulador de compras e lembretes locais.',
     changelog: [
-      'Dock inferior expansível mostrando apenas 4 atalhos principais quando recolhido e grade completa ao puxar para cima',
-      'Modo Reorganizar para trocar módulos de lugar por toque, mover ◀ / ▶ ou fixar entre os 4 principais',
-      'Motor DockOrderEngine com deduplicação e inclusão automática de novos módulos',
-      'Migração Room v6 preservando todos os dados locais e mantendo compatibilidade no backup JSON',
+      'Novo módulo Finanças offline com Resumo, Calendário mensal, Simulador de compras e Ajustes',
+      'OCR no aparelho para boletos, comprovantes Pix e cupons em imagem ou PDF (até 5 páginas)',
+      'Parcelamentos em 1x..36x com centavos exatos, recorrência mensal e status pago por ocorrência',
+      'Migração Room v7 preservando dados locais e integração completa ao backup JSON',
     ],
-    apkUrl: 'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.4.0.apk',
-    apkSizeBytes: 22442023,
-    sha256: '8bcba358dd9e9fdd6a260f4fde30ea8ab2a879e85fb8137424f51779814ca15d',
+    apkUrl: 'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.5.0.apk',
+    apkSizeBytes: 35828261,
+    sha256: '36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0',
     minSdk: 26,
     abi: 'arm64-v8a',
     patches: [
       {
-        fromVersionCode: 4,
-        fromVersionName: '1.3.0',
+        fromVersionCode: 5,
+        fromVersionName: '1.4.0',
         patchUrl:
-          'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.4.0/Krono-v1.3.0-to-v1.4.0.kpatch',
-        patchSizeBytes: 3331861,
-        patchSha256: '01e39d6d1b485d5f68be82a8667cb83b815aa8b25ae1779b3ef2f34b45c14c19',
+          'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.4.0-to-v1.5.0.kpatch',
+        patchSizeBytes: 21333209,
+        patchSha256: 'f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9',
       },
     ],
     documentation: [],
