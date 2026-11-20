@@ -23,31 +23,31 @@ import { ReleasesManifest } from './types';
 
 const FALLBACK_MANIFEST: ReleasesManifest = {
   latest: {
-    versionCode: 3,
-    versionName: '1.2.0',
+    versionCode: 4,
+    versionName: '1.3.0',
     releasedAt: '2026-11-20',
     channel: 'production',
     summary:
-      'Blindagem criptográfica ponta a ponta no auto-updater (assinatura RSA-2048 do manifesto, certificate pinning do APK, allowlist estrita de domínios HTTPS e proteção contra decompression bomb), além da prévia interativa ao vivo na Landing Page.',
+      'Novo Módulo de Mercado 100% offline com scanner de código de barras (CameraX + ZXing), cadastro de produtos, exibição imediata do último preço pago ao recomprar, comparativo de economia e histórico completo item a item.',
     changelog: [
-      'Validação criptográfica SHA256withRSA do manifesto com chave pública RSA-2048 pinada no APK',
-      'Certificate pinning SHA-256 exigindo assinante oficial único antes de abrir o instalador',
-      'Allowlist estrita HTTPS para manifesto e redirecionamentos CDN do GitHub Releases',
-      'Proteção contra decompression bomb no patch KDP1 e bloqueio global de tráfego cleartext',
+      'Novo Módulo de Mercado offline com Compra Atual, Histórico e Catálogo de Produtos',
+      'Scanner de código de barras offline (EAN-13, EAN-8, UPC, Code-128, QR) com lanterna',
+      'Comparativo instantâneo com o último preço pago (em R$ e %) ao escanear na prateleira',
+      'Migração Room v5 preservando dados locais e suporte completo no backup JSON',
     ],
-    apkUrl: 'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk',
-    apkSizeBytes: 20408937,
-    sha256: '2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4',
+    apkUrl: 'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.3.0.apk',
+    apkSizeBytes: 22409259,
+    sha256: 'f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1',
     minSdk: 26,
     abi: 'arm64-v8a',
     patches: [
       {
-        fromVersionCode: 2,
-        fromVersionName: '1.1.0',
+        fromVersionCode: 3,
+        fromVersionName: '1.2.0',
         patchUrl:
-          'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch',
-        patchSizeBytes: 13103537,
-        patchSha256: '58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c',
+          'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.2.0-to-v1.3.0.kpatch',
+        patchSizeBytes: 15010374,
+        patchSha256: '647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9',
       },
     ],
     documentation: [],

@@ -1,85 +1,176 @@
 {
   "latest": {
-    "versionCode": 3,
-    "versionName": "1.2.0",
+    "versionCode": 4,
+    "versionName": "1.3.0",
     "releasedAt": "2026-11-20",
     "channel": "production",
-    "summary": "Blindagem criptográfica ponta a ponta no auto-updater (assinatura RSA-2048 do manifesto, certificate pinning do APK, allowlist estrita de domínios HTTPS, proteção contra decompression bomb e cleartext desativado), além da prévia interativa ao vivo na Landing Page.",
+    "summary": "Novo Módulo de Mercado 100% offline com scanner de código de barras (CameraX + ZXing), cadastro de produtos, exibição imediata do último preço pago ao recomprar, comparativo de economia e histórico completo item a item.",
     "highlights": [
-      "Assinatura RSA-2048 obrigatória no manifesto remoto (/api/releases.json)",
-      "Certificate Pinning SHA-256 do APK antes e após cada download/patch",
-      "Allowlist estrita de domínios HTTPS, bloqueio de downgrade e anti-bomb KDP1",
-      "Suporte a patch delta KDP1 a partir da v1.1.0 (-35,8% / 7,31 MB economizados) e v1.0.0"
+      "Novo Módulo de Mercado na aba inferior e atalho rápido no Dashboard",
+      "Scanner de código de barras offline (EAN-13, EAN-8, UPC, Code-128, QR) com lanterna",
+      "Exibição automática do último preço pago + diferença em R$ e % ao escanear novamente",
+      "Histórico de compras concluídas (gasto mensal, ticket médio e recibos) em Room v5"
     ],
     "changelog": [
-      "Validação criptográfica SHA256withRSA do manifesto com chave pública RSA-2048 pinada no APK (AppUpdateSecurity)",
-      "Certificate pinning exigindo assinante único idêntico ao certificado oficial antes de abrir o instalador",
-      "Bloqueio de downgrade e conferência obrigatória de packageName e versionCode do APK",
-      "Allowlist estrita HTTPS para manifesto e downloads/redirecionamentos CDN do GitHub Releases",
-      "Proteção contra GZIP decompression bomb, overflow em OP_COPY/OP_DATA e limites de tamanho em downloads",
-      "Bloqueio global de tráfego cleartext (network_security_config.xml) e allowBackup=\"false\""
+      "Módulo completo de Mercado offline com 3 sub-abas: Compra Atual, Histórico e Produtos",
+      "Scanner de código de barras offline usando CameraX 1.4.2 + ZXing Core 3.5.3 com suporte a orientação retrato/paisagem, lanterna e entrada manual",
+      "Detecção instantânea de produto cadastrado exibindo Último preço pago, data, supermercado, menor valor histórico e comparação ao vivo",
+      "Histórico de compras com resumo mensal (Total gasto, Compras, Ticket médio), recibo completo de itens e ficha evolutiva por produto (Último, Menor, Maior, Média)",
+      "Migração segura Room v4 -> v5 (market_products, market_trips e market_purchase_items) com recálculo automático ao excluir compras",
+      "Suporte completo das tabelas de Mercado na exportação e importação do backup JSON offline"
     ],
-    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk",
-    "apkSizeBytes": 20408937,
-    "sha256": "2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4",
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.3.0.apk",
+    "apkSizeBytes": 22409259,
+    "sha256": "f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1",
     "minSdk": 26,
     "abi": "arm64-v8a",
     "patches": [
       {
+        "fromVersionCode": 3,
+        "fromVersionName": "1.2.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.2.0-to-v1.3.0.kpatch",
+        "patchSizeBytes": 15010374,
+        "patchSha256": "647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9"
+      },
+      {
         "fromVersionCode": 2,
         "fromVersionName": "1.1.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch",
-        "patchSizeBytes": 13103537,
-        "patchSha256": "58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.1.0-to-v1.3.0.kpatch",
+        "patchSizeBytes": 15010734,
+        "patchSha256": "edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c"
       },
       {
         "fromVersionCode": 1,
         "fromVersionName": "1.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.0.0-to-v1.2.0.kpatch",
-        "patchSizeBytes": 13135670,
-        "patchSha256": "190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.0.0-to-v1.3.0.kpatch",
+        "patchSizeBytes": 15010812,
+        "patchSha256": "bafc5f8a6a275709d06e3ad592eae57add26a5b91506874ddc5f4180aff2e4fd"
       }
     ],
     "documentation": [
       {
-        "title": "Blindagem Criptográfica OTA (RSA-2048)",
+        "title": "Módulo de Mercado & Comparativo de Preços",
         "items": [
-          "AppUpdateSecurity valida assinatura SHA256withRSA sobre o payload canônico (versionCode, versionName, minSdk, apkUrl, apkSizeBytes, sha256 e patches) usando chave pública SPKI RSA-2048 pinada.",
-          "Certificate pinning confere o digest SHA-256 do assinante (db0bfd...37b6), bloqueia multi-signer, valida packageName == com.krono.app e bloqueia downgrade."
+          "Gerenciamento completo de compras em Compra Atual (carrinho ativo com total em R$, diferença vs último preço pago e supermercado), Histórico (resumo mensal e recibos) e Produtos (catálogo com estatísticas).",
+          "MarketPricingEngine executa cálculos monetários inteiros em centavos (Long) para evitar imprecisões decimais em quantidades fracionadas (kg, g, L, ml)."
         ]
       },
       {
-        "title": "Rede Segura & Anti-Bomb",
+        "title": "Scanner Offline CameraX + ZXing",
         "items": [
-          "Somente HttpsURLConnection permitida em toda a cadeia de redirecionamentos (apenas krono.rafixx.com, github.com/IsaacNilsonViana/krono-lp/releases/download/ e hosts CDN oficiais do GitHub após 302).",
-          "KronoDeltaPatcher limita o arquivo reconstruído a 128 MB e valida limites antes de cada OP_COPY / OP_DATA; network_security_config.xml bloqueia cleartext globalmente."
+          "Lê EAN-13, EAN-8, UPC-A, UPC-E, CODE-128, CODE-39, ITF e QR_CODE direto no dispositivo sem depender do Google Play Services nem conexão de rede.",
+          "BarcodeDecoder processa frames YUV respeitando rowStride em orientação original e rotacionada em 90 graus para leitura rápida em pé."
         ]
       },
       {
-        "title": "Infraestrutura Web & Prévia Interativa",
+        "title": "Banco Room v5 & Backup",
         "items": [
-          "Nginx endurecido em krono.rafixx.com com HSTS, CSP estrita, X-Frame-Options: DENY, rate limiting, métodos GET/HEAD e webroot read-only; porta 8080 do dashboard Traefik desativada.",
-          "Nova seção interativa #previa permitindo testar Rotina, Krono IA, Pomodoro e Tempo de Uso direto no navegador."
+          "MIGRATION_4_5 cria market_products (barcode único), market_trips e market_purchase_items preservando todas as tarefas, metas, notas, sessões de foco e memórias da IA.",
+          "Inclusão completa das tabelas de Mercado no backup/restauração em arquivo JSON offline."
         ]
       },
       {
-        "title": "Checksums & Patches",
+        "title": "Checksums & Patches Delta",
         "items": [
-          "APK v1.2.0 SHA-256: 2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4",
-          "Delta v1.1.0 -> v1.2.0 SHA-256: 58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c (13.103.537 bytes)",
-          "Delta v1.0.0 -> v1.2.0 SHA-256: 190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be (13.135.670 bytes)"
+          "APK v1.3.0 SHA-256: f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1",
+          "Delta v1.2.0 -> v1.3.0 SHA-256: 647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9 (15.010.374 bytes, -33,02%)",
+          "Delta v1.1.0 -> v1.3.0 SHA-256: edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c (15.010.734 bytes, -33,02%)",
+          "Delta v1.0.0 -> v1.3.0 SHA-256: bafc5f8a6a275709d06e3ad592eae57add26a5b91506874ddc5f4180aff2e4fd (15.010.812 bytes, -33,02%)"
         ]
       }
     ],
     "signatureAlg": "SHA256withRSA",
-    "signature": "XHN3AGVmhLdSzybj5MLVxzYSKLKZkBz/wXYTkv8cwVz0E5N8V9ILxkNanxhX29JOnh6hxCBGD1+xB9N4kJU5EcwlGNKuH3WWI0J0cPm+ZQ7JDLJ1kJvaq/7sCcy5FX4rTzXDUv5JWhsOuHnwCfITT5ru7sBpw35NBzwFZl3KJvoiI0CMlkuTvhJ7alH08ZiDempdfbPIIwiWJ4NQuC8bFdyqzJ3kVx3NSHfk1Yy0I2BtpADmulUs7EXgeFLcOOoCErbMH+fKR8rPQbepV8cT/hjO56Z/7WNq5vqEZikpc0rdzjhWVa9PJiLvmodfyRONc303zZFGJzTBxS+Jz+OqyQ=="
+    "signature": "WLMSZuyJvm9/fypc7VMHv/5yqR47TVC2cROux/h3qsWOqF1t67o45SWJDwWmSbWil6jad3Va9x2dhE/5rW2WDAzElvVMjiucM6S5Tbc+0MkIc+NrX2GukrGktGtDBci04tyKsSRmhApm9Ref6cLLLy7oAT0cNqclazVP8kphHfhaYM4GLgdct+BdJzHF30wR6UAFdOagENkFu1ll8hzL38wL6w38AJlhMiCycvKTGdBllkcq4XLDHVUQqTEKQmgEbaRgSQOK+81Z9/ncat0b57h4bea29dKBfMcKW/AuB/L4Hgaln0FmX4mUTHlE6r4vb1bIDX5+3L/wWAbCM467sg=="
   },
   "versions": [
+    {
+      "versionCode": 4,
+      "versionName": "1.3.0",
+      "releasedAt": "2026-11-20",
+      "channel": "production",
+      "summary": "Novo Módulo de Mercado 100% offline com scanner de código de barras (CameraX + ZXing), cadastro de produtos, exibição imediata do último preço pago ao recomprar, comparativo de economia e histórico completo item a item.",
+      "highlights": [
+        "Novo Módulo de Mercado na aba inferior e atalho rápido no Dashboard",
+        "Scanner de código de barras offline (EAN-13, EAN-8, UPC, Code-128, QR) com lanterna",
+        "Exibição automática do último preço pago + diferença em R$ e % ao escanear novamente",
+        "Histórico de compras concluídas (gasto mensal, ticket médio e recibos) em Room v5"
+      ],
+      "changelog": [
+        "Módulo completo de Mercado offline com 3 sub-abas: Compra Atual, Histórico e Produtos",
+        "Scanner de código de barras offline usando CameraX 1.4.2 + ZXing Core 3.5.3 com suporte a orientação retrato/paisagem, lanterna e entrada manual",
+        "Detecção instantânea de produto cadastrado exibindo Último preço pago, data, supermercado, menor valor histórico e comparação ao vivo",
+        "Histórico de compras com resumo mensal (Total gasto, Compras, Ticket médio), recibo completo de itens e ficha evolutiva por produto (Último, Menor, Maior, Média)",
+        "Migração segura Room v4 -> v5 (market_products, market_trips e market_purchase_items) com recálculo automático ao excluir compras",
+        "Suporte completo das tabelas de Mercado na exportação e importação do backup JSON offline"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.3.0.apk",
+      "apkSizeBytes": 22409259,
+      "sha256": "f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "patches": [
+        {
+          "fromVersionCode": 3,
+          "fromVersionName": "1.2.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.2.0-to-v1.3.0.kpatch",
+          "patchSizeBytes": 15010374,
+          "patchSha256": "647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9"
+        },
+        {
+          "fromVersionCode": 2,
+          "fromVersionName": "1.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.1.0-to-v1.3.0.kpatch",
+          "patchSizeBytes": 15010734,
+          "patchSha256": "edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c"
+        },
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.3.0/Krono-v1.0.0-to-v1.3.0.kpatch",
+          "patchSizeBytes": 15010812,
+          "patchSha256": "bafc5f8a6a275709d06e3ad592eae57add26a5b91506874ddc5f4180aff2e4fd"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Módulo de Mercado & Comparativo de Preços",
+          "items": [
+            "Gerenciamento completo de compras em Compra Atual (carrinho ativo com total em R$, diferença vs último preço pago e supermercado), Histórico (resumo mensal e recibos) e Produtos (catálogo com estatísticas).",
+            "MarketPricingEngine executa cálculos monetários inteiros em centavos (Long) para evitar imprecisões decimais em quantidades fracionadas (kg, g, L, ml)."
+          ]
+        },
+        {
+          "title": "Scanner Offline CameraX + ZXing",
+          "items": [
+            "Lê EAN-13, EAN-8, UPC-A, UPC-E, CODE-128, CODE-39, ITF e QR_CODE direto no dispositivo sem depender do Google Play Services nem conexão de rede.",
+            "BarcodeDecoder processa frames YUV respeitando rowStride em orientação original e rotacionada em 90 graus para leitura rápida em pé."
+          ]
+        },
+        {
+          "title": "Banco Room v5 & Backup",
+          "items": [
+            "MIGRATION_4_5 cria market_products (barcode único), market_trips e market_purchase_items preservando todas as tarefas, metas, notas, sessões de foco e memórias da IA.",
+            "Inclusão completa das tabelas de Mercado no backup/restauração em arquivo JSON offline."
+          ]
+        },
+        {
+          "title": "Checksums & Patches Delta",
+          "items": [
+            "APK v1.3.0 SHA-256: f070e81eef8d3625ad077afc2df47ba4cb715b04574b171488c955921b4da4b1",
+            "Delta v1.2.0 -> v1.3.0 SHA-256: 647f4c7cc30d3b00180055a68040538960593cd3e88eb83b0e06192116fbded9 (15.010.374 bytes, -33,02%)",
+            "Delta v1.1.0 -> v1.3.0 SHA-256: edc812512f684bee2013bfb7a89700c6d9c288323af6f90733add1e0e3ad3a4c (15.010.734 bytes, -33,02%)",
+            "Delta v1.0.0 -> v1.3.0 SHA-256: bafc5f8a6a275709d06e3ad592eae57add26a5b91506874ddc5f4180aff2e4fd (15.010.812 bytes, -33,02%)"
+          ]
+        }
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "WLMSZuyJvm9/fypc7VMHv/5yqR47TVC2cROux/h3qsWOqF1t67o45SWJDwWmSbWil6jad3Va9x2dhE/5rW2WDAzElvVMjiucM6S5Tbc+0MkIc+NrX2GukrGktGtDBci04tyKsSRmhApm9Ref6cLLLy7oAT0cNqclazVP8kphHfhaYM4GLgdct+BdJzHF30wR6UAFdOagENkFu1ll8hzL38wL6w38AJlhMiCycvKTGdBllkcq4XLDHVUQqTEKQmgEbaRgSQOK+81Z9/ncat0b57h4bea29dKBfMcKW/AuB/L4Hgaln0FmX4mUTHlE6r4vb1bIDX5+3L/wWAbCM467sg=="
+    },
     {
       "versionCode": 3,
       "versionName": "1.2.0",
       "releasedAt": "2026-11-20",
-      "channel": "production",
+      "channel": "archive",
       "summary": "Blindagem criptográfica ponta a ponta no auto-updater (assinatura RSA-2048 do manifesto, certificate pinning do APK, allowlist estrita de domínios HTTPS, proteção contra decompression bomb e cleartext desativado), além da prévia interativa ao vivo na Landing Page.",
       "highlights": [
         "Assinatura RSA-2048 obrigatória no manifesto remoto (/api/releases.json)",
