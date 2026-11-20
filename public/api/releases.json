@@ -1,83 +1,160 @@
 {
   "latest": {
-    "versionCode": 2,
-    "versionName": "1.1.0",
+    "versionCode": 3,
+    "versionName": "1.2.0",
     "releasedAt": "2026-11-20",
     "channel": "production",
-    "summary": "Auto-atualização inteligente online via delta binário KDP1 (economiza 7,27 MB vs APK completo), cards e gráficos interativos ao vivo no chat da IA, histórico conversacional estendido (3072 tokens / 12 turnos), edição/cópia de mensagens e geração contínua em segundo plano com notificação.",
+    "summary": "Blindagem criptográfica ponta a ponta no auto-updater (assinatura RSA-2048 do manifesto, certificate pinning do APK, allowlist estrita de domínios HTTPS, proteção contra decompression bomb e cleartext desativado), além da prévia interativa ao vivo na Landing Page.",
     "highlights": [
-      "Auto-atualização online via Delta Patch KDP1 (-35,6% de download nesta versão)",
-      "Cards e gráficos interativos ao vivo (Top apps, Tempo restante, Rotina, Notas, Metas)",
-      "IA continua processando em segundo plano e notifica quando terminar",
-      "Copiar qualquer mensagem e Editar/reenviar mensagens enviadas"
+      "Assinatura RSA-2048 obrigatória no manifesto remoto (/api/releases.json)",
+      "Certificate Pinning SHA-256 do APK antes e após cada download/patch",
+      "Allowlist estrita de domínios HTTPS, bloqueio de downgrade e anti-bomb KDP1",
+      "Suporte a patch delta KDP1 a partir da v1.1.0 (-35,8% / 7,31 MB economizados) e v1.0.0"
     ],
     "changelog": [
-      "Auto-atualização online automática via delta binário KDP1 com dupla verificação SHA-256",
-      "Tela de Perfil com card de atualizações, barra de progresso, economia de MB e link para histórico",
-      "Banner ao vivo no painel quando uma atualização verificada está pronta para instalar",
-      "Memória conversacional ampliada para 3072 tokens e 12 turnos com sampler anti-loop",
-      "Geração do Qwen em segundo plano (Foreground Service + notificação ao finalizar)",
-      "Ações de Copiar (todas as mensagens) e Editar/Reenviar (mensagens enviadas) com preservação de KV-cache",
-      "Cards interativos no chat para Tempo de Tela, Top 3/5 Apps, Rotina, Metas, Notas e Foco",
-      "Correção da máquina de estados de Tempo de Uso entre Activities e desligamento de tela"
+      "Validação criptográfica SHA256withRSA do manifesto com chave pública RSA-2048 pinada no APK (AppUpdateSecurity)",
+      "Certificate pinning exigindo assinante único idêntico ao certificado oficial antes de abrir o instalador",
+      "Bloqueio de downgrade e conferência obrigatória de packageName e versionCode do APK",
+      "Allowlist estrita HTTPS para manifesto e downloads/redirecionamentos CDN do GitHub Releases",
+      "Proteção contra GZIP decompression bomb, overflow em OP_COPY/OP_DATA e limites de tamanho em downloads",
+      "Bloqueio global de tráfego cleartext (network_security_config.xml) e allowBackup=\"false\""
     ],
-    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk",
-    "apkSizeBytes": 20392109,
-    "sha256": "fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48",
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk",
+    "apkSizeBytes": 20408937,
+    "sha256": "2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4",
     "minSdk": 26,
     "abi": "arm64-v8a",
     "patches": [
       {
+        "fromVersionCode": 2,
+        "fromVersionName": "1.1.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch",
+        "patchSizeBytes": 13103537,
+        "patchSha256": "58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c"
+      },
+      {
         "fromVersionCode": 1,
         "fromVersionName": "1.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch",
-        "patchSizeBytes": 13126734,
-        "patchSha256": "7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.0.0-to-v1.2.0.kpatch",
+        "patchSizeBytes": 13135670,
+        "patchSha256": "190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be"
       }
     ],
     "documentation": [
       {
-        "title": "Auto-Atualização Delta (KDP1)",
+        "title": "Blindagem Criptográfica OTA (RSA-2048)",
         "items": [
-          "Endpoint consultado automaticamente quando online: https://krono.rafixx.com/api/releases.json (intervalo automático de 6h ou manual em Perfil).",
-          "Formato binário KDP1 comprimido em GZIP com opcodes OP_COPY (leitura direta dos blocos idênticos do APK instalado em applicationInfo.sourceDir) e OP_DATA (bytes novos).",
-          "Validação dupla de SHA-256 (patch e APK final reconstruído) com fallback transparente para download resumível do APK completo.",
-          "Os pesos offline do Qwen2.5-3B (files/models/) e o banco SQLite Room não são apagados durante a atualização."
+          "AppUpdateSecurity valida assinatura SHA256withRSA sobre o payload canônico (versionCode, versionName, minSdk, apkUrl, apkSizeBytes, sha256 e patches) usando chave pública SPKI RSA-2048 pinada.",
+          "Certificate pinning confere o digest SHA-256 do assinante (db0bfd...37b6), bloqueia multi-signer, valida packageName == com.krono.app e bloqueia downgrade."
         ]
       },
       {
-        "title": "Motor de IA & Continuidade",
+        "title": "Rede Segura & Anti-Bomb",
         "items": [
-          "Contexto nativo ampliado para 3072 tokens no llama.cpp v1.0.0 com repeat_penalty = 1.12, janela 128 e presence_penalty = 0.10 após top_k/top_p/min_p.",
-          "Histórico conversacional de até 12 turnos (teto de 4800 caracteres) preservado byte-a-byte para reutilização máxima do prefixo no cache KV.",
-          "Execução desacoplada da Activity via AiSessionHolder (Application) + AiGenerationForegroundService, com notificação dedicada quando o usuário sai do chat."
+          "Somente HttpsURLConnection permitida em toda a cadeia de redirecionamentos (apenas krono.rafixx.com, github.com/IsaacNilsonViana/krono-lp/releases/download/ e hosts CDN oficiais do GitHub após 302).",
+          "KronoDeltaPatcher limita o arquivo reconstruído a 128 MB e valida limites antes de cada OP_COPY / OP_DATA; network_security_config.xml bloqueia cleartext globalmente."
         ]
       },
       {
-        "title": "Experiência Visual no Chat & Tempo de Uso",
+        "title": "Infraestrutura Web & Prévia Interativa",
         "items": [
-          "AiWidgetResolver determinístico em Kotlin anexa cards interativos ao vivo sem aumentar o prompt enviado ao modelo.",
-          "ScreenTimeManager refatorado para máquina de estados por componente (packageName + className) com encerramento automático em SCREEN_NON_INTERACTIVE / KEYGUARD_SHOWN."
+          "Nginx endurecido em krono.rafixx.com com HSTS, CSP estrita, X-Frame-Options: DENY, rate limiting, métodos GET/HEAD e webroot read-only; porta 8080 do dashboard Traefik desativada.",
+          "Nova seção interativa #previa permitindo testar Rotina, Krono IA, Pomodoro e Tempo de Uso direto no navegador."
         ]
       },
       {
-        "title": "Requisitos & Verificação",
+        "title": "Checksums & Patches",
         "items": [
-          "Compatível com Android 8.0+ (API 26+) ARM64 (arm64-v8a), compilado com alinhamento de página 16 KB para Android 15/16.",
-          "APK v1.1.0 SHA-256: fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48",
-          "Patch Delta v1.0.0 -> v1.1.0 SHA-256: 7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f"
+          "APK v1.2.0 SHA-256: 2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4",
+          "Delta v1.1.0 -> v1.2.0 SHA-256: 58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c (13.103.537 bytes)",
+          "Delta v1.0.0 -> v1.2.0 SHA-256: 190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be (13.135.670 bytes)"
         ]
       }
     ],
     "signatureAlg": "SHA256withRSA",
-    "signature": "R/lDkYYF/Y6n51msfkM3/onpWCQc3M4cAcDZ/qRQqcTiStfE49NpkfjubTRNtf5lYYUjduJMZmmJCR9Bz2g2JUhQiWDKBrm047bnHG03mynB7Puez6Z62xXg1CVgDcspSn+4rur8Hft0EgA0qkgJ6VZyP3zMZet+70sI3wgS7EUm2O/Cv9eFn7PDpgW4mSOLk6117D0cjF8/SOCl1YMAkxgNcdHoSu3Yg+g+5g2GXk7FwZeh2KQs3qLromUoVCRCai2aQik5TCp7E7Fje5XaCEYSfc2r6wd3cFMML+KOIwkBAMpyFaOgOyD7vO7+lCGteMmCsxXw3+w2UGb5Jmnh4Q=="
+    "signature": "XHN3AGVmhLdSzybj5MLVxzYSKLKZkBz/wXYTkv8cwVz0E5N8V9ILxkNanxhX29JOnh6hxCBGD1+xB9N4kJU5EcwlGNKuH3WWI0J0cPm+ZQ7JDLJ1kJvaq/7sCcy5FX4rTzXDUv5JWhsOuHnwCfITT5ru7sBpw35NBzwFZl3KJvoiI0CMlkuTvhJ7alH08ZiDempdfbPIIwiWJ4NQuC8bFdyqzJ3kVx3NSHfk1Yy0I2BtpADmulUs7EXgeFLcOOoCErbMH+fKR8rPQbepV8cT/hjO56Z/7WNq5vqEZikpc0rdzjhWVa9PJiLvmodfyRONc303zZFGJzTBxS+Jz+OqyQ=="
   },
   "versions": [
+    {
+      "versionCode": 3,
+      "versionName": "1.2.0",
+      "releasedAt": "2026-11-20",
+      "channel": "production",
+      "summary": "Blindagem criptográfica ponta a ponta no auto-updater (assinatura RSA-2048 do manifesto, certificate pinning do APK, allowlist estrita de domínios HTTPS, proteção contra decompression bomb e cleartext desativado), além da prévia interativa ao vivo na Landing Page.",
+      "highlights": [
+        "Assinatura RSA-2048 obrigatória no manifesto remoto (/api/releases.json)",
+        "Certificate Pinning SHA-256 do APK antes e após cada download/patch",
+        "Allowlist estrita de domínios HTTPS, bloqueio de downgrade e anti-bomb KDP1",
+        "Suporte a patch delta KDP1 a partir da v1.1.0 (-35,8% / 7,31 MB economizados) e v1.0.0"
+      ],
+      "changelog": [
+        "Validação criptográfica SHA256withRSA do manifesto com chave pública RSA-2048 pinada no APK (AppUpdateSecurity)",
+        "Certificate pinning exigindo assinante único idêntico ao certificado oficial antes de abrir o instalador",
+        "Bloqueio de downgrade e conferência obrigatória de packageName e versionCode do APK",
+        "Allowlist estrita HTTPS para manifesto e downloads/redirecionamentos CDN do GitHub Releases",
+        "Proteção contra GZIP decompression bomb, overflow em OP_COPY/OP_DATA e limites de tamanho em downloads",
+        "Bloqueio global de tráfego cleartext (network_security_config.xml) e allowBackup=\"false\""
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk",
+      "apkSizeBytes": 20408937,
+      "sha256": "2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "patches": [
+        {
+          "fromVersionCode": 2,
+          "fromVersionName": "1.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch",
+          "patchSizeBytes": 13103537,
+          "patchSha256": "58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c"
+        },
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.0.0-to-v1.2.0.kpatch",
+          "patchSizeBytes": 13135670,
+          "patchSha256": "190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Blindagem Criptográfica OTA (RSA-2048)",
+          "items": [
+            "AppUpdateSecurity valida assinatura SHA256withRSA sobre o payload canônico (versionCode, versionName, minSdk, apkUrl, apkSizeBytes, sha256 e patches) usando chave pública SPKI RSA-2048 pinada.",
+            "Certificate pinning confere o digest SHA-256 do assinante (db0bfd...37b6), bloqueia multi-signer, valida packageName == com.krono.app e bloqueia downgrade."
+          ]
+        },
+        {
+          "title": "Rede Segura & Anti-Bomb",
+          "items": [
+            "Somente HttpsURLConnection permitida em toda a cadeia de redirecionamentos (apenas krono.rafixx.com, github.com/IsaacNilsonViana/krono-lp/releases/download/ e hosts CDN oficiais do GitHub após 302).",
+            "KronoDeltaPatcher limita o arquivo reconstruído a 128 MB e valida limites antes de cada OP_COPY / OP_DATA; network_security_config.xml bloqueia cleartext globalmente."
+          ]
+        },
+        {
+          "title": "Infraestrutura Web & Prévia Interativa",
+          "items": [
+            "Nginx endurecido em krono.rafixx.com com HSTS, CSP estrita, X-Frame-Options: DENY, rate limiting, métodos GET/HEAD e webroot read-only; porta 8080 do dashboard Traefik desativada.",
+            "Nova seção interativa #previa permitindo testar Rotina, Krono IA, Pomodoro e Tempo de Uso direto no navegador."
+          ]
+        },
+        {
+          "title": "Checksums & Patches",
+          "items": [
+            "APK v1.2.0 SHA-256: 2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4",
+            "Delta v1.1.0 -> v1.2.0 SHA-256: 58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c (13.103.537 bytes)",
+            "Delta v1.0.0 -> v1.2.0 SHA-256: 190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be (13.135.670 bytes)"
+          ]
+        }
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "XHN3AGVmhLdSzybj5MLVxzYSKLKZkBz/wXYTkv8cwVz0E5N8V9ILxkNanxhX29JOnh6hxCBGD1+xB9N4kJU5EcwlGNKuH3WWI0J0cPm+ZQ7JDLJ1kJvaq/7sCcy5FX4rTzXDUv5JWhsOuHnwCfITT5ru7sBpw35NBzwFZl3KJvoiI0CMlkuTvhJ7alH08ZiDempdfbPIIwiWJ4NQuC8bFdyqzJ3kVx3NSHfk1Yy0I2BtpADmulUs7EXgeFLcOOoCErbMH+fKR8rPQbepV8cT/hjO56Z/7WNq5vqEZikpc0rdzjhWVa9PJiLvmodfyRONc303zZFGJzTBxS+Jz+OqyQ=="
+    },
     {
       "versionCode": 2,
       "versionName": "1.1.0",
       "releasedAt": "2026-11-20",
-      "channel": "production",
+      "channel": "archive",
       "summary": "Auto-atualização inteligente online via delta binário KDP1 (economiza 7,27 MB vs APK completo), cards e gráficos interativos ao vivo no chat da IA, histórico conversacional estendido (3072 tokens / 12 turnos), edição/cópia de mensagens e geração contínua em segundo plano com notificação.",
       "highlights": [
         "Auto-atualização online via Delta Patch KDP1 (-35,6% de download nesta versão)",

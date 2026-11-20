@@ -23,31 +23,31 @@ import { ReleasesManifest } from './types';
 
 const FALLBACK_MANIFEST: ReleasesManifest = {
   latest: {
-    versionCode: 2,
-    versionName: '1.1.0',
+    versionCode: 3,
+    versionName: '1.2.0',
     releasedAt: '2026-11-20',
     channel: 'production',
     summary:
-      'Auto-atualização inteligente online via delta binário KDP1, cards e gráficos interativos ao vivo no chat da IA, histórico conversacional estendido (3072 tokens / 12 turnos), edição/cópia de mensagens e geração contínua em segundo plano com notificação.',
+      'Blindagem criptográfica ponta a ponta no auto-updater (assinatura RSA-2048 do manifesto, certificate pinning do APK, allowlist estrita de domínios HTTPS e proteção contra decompression bomb), além da prévia interativa ao vivo na Landing Page.',
     changelog: [
-      'Auto-atualização online automática via delta binário KDP1 com dupla verificação SHA-256',
-      'Memória conversacional ampliada para 3072 tokens e 12 turnos com sampler anti-loop',
-      'Geração do Qwen em segundo plano com notificação quando a resposta termina',
-      'Cards interativos ao vivo no chat para Tempo de Tela, Top Apps, Rotina, Metas, Notas e Foco',
+      'Validação criptográfica SHA256withRSA do manifesto com chave pública RSA-2048 pinada no APK',
+      'Certificate pinning SHA-256 exigindo assinante oficial único antes de abrir o instalador',
+      'Allowlist estrita HTTPS para manifesto e redirecionamentos CDN do GitHub Releases',
+      'Proteção contra decompression bomb no patch KDP1 e bloqueio global de tráfego cleartext',
     ],
-    apkUrl: 'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk',
-    apkSizeBytes: 20392109,
-    sha256: 'fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48',
+    apkUrl: 'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk',
+    apkSizeBytes: 20408937,
+    sha256: '2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4',
     minSdk: 26,
     abi: 'arm64-v8a',
     patches: [
       {
-        fromVersionCode: 1,
-        fromVersionName: '1.0.0',
+        fromVersionCode: 2,
+        fromVersionName: '1.1.0',
         patchUrl:
-          'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch',
-        patchSizeBytes: 13126734,
-        patchSha256: '7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f',
+          'https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch',
+        patchSizeBytes: 13103537,
+        patchSha256: '58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c',
       },
     ],
     documentation: [],

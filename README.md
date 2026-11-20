@@ -1,6 +1,6 @@
 # Krono — Landing Page, Hub de Releases e Auto-Atualização OTA
 
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-v1.1.0%20(build%202)-38BDF8?style=flat-square)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0)
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-v1.2.0%20(build%203)-38BDF8?style=flat-square)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.2.0)
 [![Plataforma](https://img.shields.io/badge/Android-8.0%2B%20%C2%B7%20arm64--v8a-22C55E?style=flat-square)](https://krono.rafixx.com/#versoes)
 [![Site Oficial](https://img.shields.io/badge/Site%20Oficial-krono.rafixx.com-6366F1?style=flat-square)](https://krono.rafixx.com/)
 [![Releases](https://img.shields.io/badge/GitHub-Releases-181717?style=flat-square&logo=github)](https://github.com/IsaacNilsonViana/krono-lp/releases)
@@ -17,22 +17,26 @@ Este repositório (`krono-lp`) hospeda:
 
 ## Downloads
 
-> **Download direto da versão mais recente (`v1.1.0`):**
+> **Download direto da versão mais recente (`v1.2.0`):**
 > - **APK Latest (redirect oficial):** [`https://krono.rafixx.com/releases/latest/download/Krono-latest.apk`](https://krono.rafixx.com/releases/latest/download/Krono-latest.apk)
-> - **Release oficial `v1.1.0`:** [`https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0)
+> - **Release oficial `v1.2.0`:** [`https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.2.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.2.0)
 > - **Landing Page com documentação interativa:** [`https://krono.rafixx.com/#versoes`](https://krono.rafixx.com/#versoes)
 
 ### Tabela Completa de Versões e Artefatos
 
 | Versão | Build | Data | Canal | APK Completo | Patch Delta (`KDP1`) |
 | --- | :---: | --- | --- | --- | --- |
-| [**`v1.1.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0) | `2` | `2026-11-20` | `Latest / Produção` | [`Krono-v1.1.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk) (`20,39 MB` / `20.392.109 bytes`) | [`Krono-v1.0.0-to-v1.1.0.kpatch`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch) (`13,13 MB` / `13.126.734 bytes` — economia de `7,27 MB` / `35,63%`) |
+| [**`v1.2.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.2.0) | `3` | `2026-11-20` | `Latest / Produção` | [`Krono-v1.2.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.2.0.apk) (`20,41 MB` / `20.408.937 bytes`) | [`v1.1.0 -> v1.2.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.1.0-to-v1.2.0.kpatch) (`13,10 MB` / `-35,8%`) · [`v1.0.0 -> v1.2.0`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.2.0/Krono-v1.0.0-to-v1.2.0.kpatch) (`13,14 MB` / `-35,64%`) |
+| [**`v1.1.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0) | `2` | `2026-11-20` | `Arquivo` | [`Krono-v1.1.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.1.0.apk) (`20,39 MB` / `20.392.109 bytes`) | [`Krono-v1.0.0-to-v1.1.0.kpatch`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.1.0/Krono-v1.0.0-to-v1.1.0.kpatch) (`13,13 MB` / `13.126.734 bytes` — economia de `7,27 MB` / `35,63%`) |
 | [**`v1.0.0`**](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.0.0) | `1` | `2026-11-20` | `Arquivo` | [`Krono-v1.0.0.apk`](https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.0.0/Krono-v1.0.0.apk) (`20,36 MB` / `20.358.761 bytes`) | — |
 
 ### Verificação de Integridade (SHA-256)
 
 | Arquivo | SHA-256 |
 | --- | --- |
+| `Krono-v1.2.0.apk` | `2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4` |
+| `Krono-v1.1.0-to-v1.2.0.kpatch` | `58f4194ccabebc977148bc1c1232ff8c88ccac41318ed3c6d428da515d64e03c` |
+| `Krono-v1.0.0-to-v1.2.0.kpatch` | `190322eb32c029c0cf4f326beb46bb637730538ca12bab4e25bb4c5c2574f3be` |
 | `Krono-v1.1.0.apk` | `fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48` |
 | `Krono-v1.0.0-to-v1.1.0.kpatch` | `7ded93eb49f949547329c5076cd3b57121611aba8e92671e89cbb5cedc6ab80f` |
 | `Krono-v1.0.0.apk` | `553806636f1bfc241fb1ef8787abd1c33dc3cd8ca66289a233779db3dc7e8ef2` |
@@ -40,8 +44,8 @@ Este repositório (`krono-lp`) hospeda:
 Exemplo de verificação local após baixar o APK:
 
 ```bash
-sha256sum Krono-v1.1.0.apk
-# Esperado: fb9255738e24ad90a45abaa20ac6189a6500d8e151b59e773bf6d3eff30c6b48
+sha256sum Krono-v1.2.0.apk
+# Esperado: 2f32d581635314478fe110d8b483770ac25374c9fa3f861e0fe0c4bec6e6dbe4
 ```
 
 ### Requisitos e Instalação no Android
@@ -50,7 +54,7 @@ sha256sum Krono-v1.1.0.apk
 - **Espaço adicional opcional:** ~2,1 GB livres caso deseje baixar os pesos do modelo `Qwen2.5-3B-Instruct (Q4_K_M)` dentro do próprio aplicativo (o **Modo Rápido** com voz PT-BR funciona imediatamente sem download extra).
 
 **Passo a passo de instalação:**
-1. Baixe [`Krono-v1.1.0.apk`](https://krono.rafixx.com/releases/latest/download/Krono-latest.apk) no dispositivo Android.
+1. Baixe [`Krono-v1.2.0.apk`](https://krono.rafixx.com/releases/latest/download/Krono-latest.apk) no dispositivo Android.
 2. Ao abrir o arquivo, habilite a permissão **Instalar apps desconhecidos** para o navegador/gerenciador de arquivos, se solicitado.
 3. Confirme a instalação.
 
@@ -59,6 +63,16 @@ sha256sum Krono-v1.1.0.apk
 ---
 
 ## Changelog de Versões
+
+### [`v1.2.0` (build 3)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.2.0) — `2026-11-20`
+
+#### Segurança & Infraestrutura
+- **Assinatura criptográfica `SHA256withRSA` no manifesto**: `AppUpdateSecurity` valida assinatura RSA-2048 de todas as releases com chave pública pinada no APK antes de confiar em URLs, tamanhos ou checksums.
+- **Certificate Pinning SHA-256**: verificação obrigatória de certificado assinante único oficial (`db0bfd...37b6`), `packageName`, contenção em `filesDir/updates/` e bloqueio de downgrade antes da instalação.
+- **Allowlist estrita de domínios HTTPS & Anti-Bomb**: redirecionamentos validados salto a salto (`HttpsURLConnection`), proteção contra GZIP decompression bomb no `KronoDeltaPatcher` (`128 MB`), `network_security_config.xml` (`cleartextTrafficPermitted="false"`) e `allowBackup="false"`.
+- **Hardening Nginx & Prévia ao vivo**: cabeçalhos de segurança (`HSTS`, `CSP`, `X-Frame-Options: DENY`, `nosniff`, `Permissions-Policy`), rate limit, webroot read-only, porta `8080` do dashboard Traefik desativada e nova prévia usável interativa em [`https://krono.rafixx.com/#previa`](https://krono.rafixx.com/#previa).
+
+---
 
 ### [`v1.1.0` (build 2)](https://github.com/IsaacNilsonViana/krono-lp/releases/tag/v1.1.0) — `2026-11-20`
 
