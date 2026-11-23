@@ -89,6 +89,17 @@ const DEFAULT_MODULES: RemoteModuleSplit[] = [
     apkSizeBytes: 6300 * 1024,
     sha256: '',
   },
+  {
+    id: 'dokploy',
+    splitName: 'feature_dokploy',
+    name: 'Dokploy & Servidores',
+    description: 'Gerencie apps, domínios HTTPS, logs, deploys e uso do servidor em qualquer painel Dokploy.',
+    category: 'DevOps & Cloud',
+    highlightNote: 'Multi-servidor • Keystore AES',
+    apkUrl: '',
+    apkSizeBytes: 180 * 1024,
+    sha256: '',
+  },
 ];
 
 function formatMb(bytes: number): string {
