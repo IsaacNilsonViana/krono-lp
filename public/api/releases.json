@@ -1,31 +1,31 @@
 {
   "latest": {
-    "versionCode": 8,
-    "versionName": "2.1.0",
+    "versionCode": 9,
+    "versionName": "2.1.1",
     "releasedAt": "2026-11-22",
     "channel": "production",
-    "summary": "Central de Módulos com sincronização automática sem código, barra de pesquisa instantânea e novo módulo dinâmico :feature_dokploy (195,99 KB) para gerenciar múltiplas contas Dokploy por API Key, domínios, CPU/RAM por app, containers, logs e .env integrado à Krono IA.",
+    "summary": "Correções essenciais no módulo :feature_dokploy (containers e uso por aplicação agora populados via project.one + docker.getContainersByAppNameMatch, métricas reais de vCPU/RAM/disco Docker do nó host, seletor automático de containers do Compose em Logs e terminal em Dialog acima da barra de módulos) além de opt-in manual garantindo que módulos novos não ativem sozinhos ao atualizar o app.",
     "highlights": [
-      "Novo módulo sob demanda :feature_dokploy (195,99 KB) multi-servidor via HTTPS e API Key",
-      "Chaves x-api-key cifradas no Android Keystore (AES-256-GCM) sem nenhuma credencial fixa",
-      "Central de Módulos atualiza catálogo automaticamente ao abrir e traz busca + filtros sem precisar de código",
-      "Monitoramento de CPU/RAM por aplicação Dokploy, validação de DNS, containers Docker, logs ao vivo, .env e Krono IA"
+      "Uso & Containers corrigidos: project.one + getContainersByAppNameMatch vinculam 100% dos apps/compose às métricas reais",
+      "Métricas reais do servidor (vCPU, RAM do host via swarm.getNodeInfo e disco Docker) e consumo detalhado por aplicação",
+      "Seletor de containers do Compose nos Logs com carregamento automático e Console em Dialog acima da barra inferior",
+      "Módulos opt-in e recém-adicionados (como Dokploy) nunca ativam automaticamente durante atualizações do app"
     ],
     "changelog": [
-      "Novo módulo dinâmico :feature_dokploy (Krono-module-dokploy-v2.1.0.apk, 195.988 B) com suporte a múltiplos servidores e API Keys configurados pelo próprio usuário dentro do app",
-      "Gerenciamento completo de aplicações/compose Dokploy: iniciar, reiniciar, parar, deploy/redeploy, domínios com validação DNS, CPU/RAM por aplicação via docker.getContainers/metrics, containers, logs de runtime/deploy e editor de .env",
-      "Criptografia local dedicada em DokployCredentialStore usando AES-256-GCM no Android Keystore (nunca salva chave em texto puro) + resumo seguro sincronizado com Krono IA (DokployKnowledgeModule)",
-      "Central de Módulos renovada em KronoModuleManager + ModulesManagerScreen: sincronização automática do manifesto /api/releases.json sem código KRONO:..., barra de pesquisa normalizada (sem acento), chips de filtro (Todos/Disponíveis/Ativos) e instalação direta em 1 toque",
-      "Base Android modularizada em Krono Core (14,87 MB) + 8 Split APKs sob demanda e APK Universal completo (36,20 MB) com 7 deltas binários KDP1 a partir de v1.0.0 até v2.0.0"
+      "Correção da causa raiz em Uso & Containers (DokployApiClient): enriquecimento paralelo com /api/project.one (pois /api/project.all omite appName/composeType), combinação com /api/docker.getContainersByAppNameMatch e fallback/timeout de 45s para /api/swarm.getContainerStats com aviso explícito de statsError",
+      "Leitura de hardware real do servidor via /api/swarm.getNodes + /api/swarm.getNodeInfo (hostname, arquitetura, vCPU e RAM total) e uso de disco Docker via /api/settings.getDockerDiskUsage, exibindo % real de RAM e CPU por aplicação e no servidor",
+      "Correção dos Logs de Compose (DokployDetailSheet): pré-seleção automática do primeiro container ativo, chips destacados com shortContainerLabel + indicador de status, carregamento automático na troca de aba/container e atalho de terminal em cada ContainerStatsCard",
+      "Correção de layout do Console/Terminal: DokployServiceDetailOverlay encapsulado em Dialog tela cheia com Scaffold/SnackbarHost próprios e imePadding(), permanecendo totalmente acima da FloatingBottomDock",
+      "Opt-in garantido na atualização (KronoModuleCatalog, KronoModuleManager, AppUpdateManager): optInByDefault no Dokploy + reconcileEmbeddedHiddenIds mantêm módulos novos ocultos até ativação manual e isModularInstallation preserva aparelhos Core com 0 splits no fluxo modular"
     ],
-    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v2.1.0.apk",
-    "apkSizeBytes": 36197847,
-    "sha256": "5d3eeee2b6b809d6c7cd37ebce5df27f83008ac0cf953492db0ca00da4b6b21d",
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v2.1.1.apk",
+    "apkSizeBytes": 36230615,
+    "sha256": "df3fc28824bbc1a2bb829af2116b949ffa167b96e890005ab6b9d31e27ec6424",
     "minSdk": 26,
     "abi": "arm64-v8a",
-    "coreApkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-core-v2.1.0.apk",
-    "coreApkSizeBytes": 14869830,
-    "coreSha256": "66806ae924bc0c7ab337118e3788ac4dff0a75ad6009e6108f404baa83ee146d",
+    "coreApkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-core-v2.1.1.apk",
+    "coreApkSizeBytes": 14886210,
+    "coreSha256": "dfc8f02b2201b2059d6619b115ac20268d9e3e2632555e88941452daa6cf5a6d",
     "modules": [
       {
         "id": "tasks",
@@ -33,9 +33,9 @@
         "name": "Tarefas & Rotina",
         "description": "Hábitos recorrentes, prioridades, subtarefas, XP e lembretes exatos.",
         "category": "Produtividade",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-tasks-v2.1.0.apk",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-tasks-v2.1.1.apk",
         "apkSizeBytes": 74048,
-        "sha256": "5d966404ac3eb39ea30d32c52a707f0b5abf0ab5031cea1a8765f5662ef9a7cd"
+        "sha256": "7b40a150e5ac323a0a58f992cfd18c7ec3155d4786778af4382c8fa3c673e570"
       },
       {
         "id": "focus",
@@ -43,9 +43,9 @@
         "name": "Foco & Tempo de Tela",
         "description": "Pomodoro em foreground, bloqueio de distrações e limites de uso de apps.",
         "category": "Bem-estar Digital",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-focus-v2.1.0.apk",
-        "apkSizeBytes": 84004,
-        "sha256": "fb3e3b83dae30cef3d064a3e225f4b78f29778e7f187579782d4cb55bb1ca585"
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-focus-v2.1.1.apk",
+        "apkSizeBytes": 84000,
+        "sha256": "b77f27b093bba03b2edb6cace0d0584b0f7683737a0f047c25f9d9246102dfbf"
       },
       {
         "id": "market",
@@ -54,9 +54,9 @@
         "description": "Scanner de código de barras, comparação de preços, carrinho e histórico.",
         "category": "Dia a Dia",
         "highlightNote": "Scanner CameraX + ZXing",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-market-v2.1.0.apk",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-market-v2.1.1.apk",
         "apkSizeBytes": 995664,
-        "sha256": "ed50ae1d063b603152d645b1434f7c0e204ff705447d86f0a2852fd8d516abe0"
+        "sha256": "aec909dd62d517f783d8af08510dd4358f5bc2ac627cc25a037db2e0b83233f8"
       },
       {
         "id": "finance",
@@ -65,9 +65,9 @@
         "description": "Receitas, despesas, parcelas em até 36x, simulador, calendário e OCR.",
         "category": "Financeiro",
         "highlightNote": "OCR offline ML Kit (~13,2 MB)",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-finance-v2.1.0.apk",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-finance-v2.1.1.apk",
         "apkSizeBytes": 13251008,
-        "sha256": "4376c0f6b10b986aec6db85bd1f54a3104c807081695beb86fe309716ef6ac71"
+        "sha256": "38cd4ece267d7d47cbcd0e90a3f048afa0aa7afa639b2d74853ec37769c4c15f"
       },
       {
         "id": "goals",
@@ -75,9 +75,9 @@
         "name": "Metas & Marcos",
         "description": "Metas quantitativas com marcos automáticos, prazo e progresso.",
         "category": "Planejamento",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-goals-v2.1.0.apk",
-        "apkSizeBytes": 60988,
-        "sha256": "98c9fc1d2e27482b6c14274c34d27cd78d3383974ac730e083e1ede82034d110"
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-goals-v2.1.1.apk",
+        "apkSizeBytes": 60984,
+        "sha256": "4355bf564ea2bfcdc178b4885c121419d08c0472a58eabb6c6a8e4e2dbfa2ed2"
       },
       {
         "id": "notes",
@@ -85,9 +85,9 @@
         "name": "Notas & Checklists",
         "description": "Notas fixáveis, etiquetas por cor/tag e checklists interativos.",
         "category": "Organização",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-notes-v2.1.0.apk",
-        "apkSizeBytes": 47732,
-        "sha256": "b7da9c83e4f7568af7114462189c629bc55c72e7e289bc92b37ead2e8b8335b3"
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-notes-v2.1.1.apk",
+        "apkSizeBytes": 47728,
+        "sha256": "fa7aa51c885c6a5b34c1bbf86e976f43aa8bc328a1941b5c98009b123cd22939"
       },
       {
         "id": "qwen",
@@ -96,9 +96,9 @@
         "description": "Motor nativo llama.cpp ARM64 para conversas com LLM offline local.",
         "category": "IA Avançada",
         "highlightNote": "Motor nativo llama.cpp (~6,6 MB)",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-qwen-v2.1.0.apk",
-        "apkSizeBytes": 6615701,
-        "sha256": "717bb723f2f83ddc21ebe2364b56e75fcb4b9b764ae93f5e655d32009e11e6f9"
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-qwen-v2.1.1.apk",
+        "apkSizeBytes": 6615697,
+        "sha256": "b0d72a041ef62c9de93994b2e2bf1e3e00b64e1d085adff01f520cb813d70a04"
       },
       {
         "id": "dokploy",
@@ -107,109 +107,328 @@
         "description": "Gerencie múltiplas contas Dokploy por API Key, domínios, CPU/RAM por app, containers, logs e .env.",
         "category": "Infraestrutura",
         "highlightNote": "Multi-conta HTTPS + Keystore",
-        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-module-dokploy-v2.1.0.apk",
-        "apkSizeBytes": 195988,
-        "sha256": "e99abb035ca6b773d4611a6033e5f1e49e582109382c0d590b672c2a79f152c6"
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-dokploy-v2.1.1.apk",
+        "apkSizeBytes": 226152,
+        "sha256": "5d4c825a3928d3d18280977f63975fea3c8865b756bb9a15f690a735d6cb6900"
       }
     ],
     "patches": [
       {
+        "fromVersionCode": 8,
+        "fromVersionName": "2.1.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v2.1.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 2760793,
+        "patchSha256": "c956038a236fb04b2e41efe6a1629cb529128d945eb074fbb4a1f8164b01866b"
+      },
+      {
         "fromVersionCode": 7,
         "fromVersionName": "2.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v2.0.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 9544944,
-        "patchSha256": "d0479f02a6cb72ff4b31e0adef08aedc54025a8ff3d31b8c326a00df5c07d3f8"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v2.0.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 9578457,
+        "patchSha256": "4e34b4f978a8c4f94912b8da1de8103cd7b527a991f014caeb0a4af79b8ee860"
       },
       {
         "fromVersionCode": 6,
         "fromVersionName": "1.5.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v1.5.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 16097467,
-        "patchSha256": "3b69fcdf20a389e9fe433ab9244d01c467a72ac2a45c0074084bb68e3ef0472a"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.5.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 16131742,
+        "patchSha256": "fd445b09ef583bb4f7917d8cd9b6a36517cea190d1b88033185a765ad0781d8f"
       },
       {
         "fromVersionCode": 5,
         "fromVersionName": "1.4.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v1.4.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 21641185,
-        "patchSha256": "3502ead9aa24127acf070d788b547c0c5e76c6e31e0babdc099e51325fd7f0cb"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.4.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 21675803,
+        "patchSha256": "7ef478a56b832a9e8530fd298452179b57462c466589adecc61ccde0d47a0d5e"
       },
       {
         "fromVersionCode": 4,
         "fromVersionName": "1.3.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v1.3.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 21641094,
-        "patchSha256": "623f9313e628b5c1036890215afd1b64f8d0f3834eae20da8d64a1a429b5ed62"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.3.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 21675726,
+        "patchSha256": "1145f072760346f14834d7a0b3e4883c78719f7658a49be0fd3ef0fe4a6e2d9b"
       },
       {
         "fromVersionCode": 3,
         "fromVersionName": "1.2.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v1.2.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 21692037,
-        "patchSha256": "f8415d33444a72e12661c64e629d6f1b73987a93eae6c769779138ed4bda7a4e"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.2.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 21725818,
+        "patchSha256": "6d1b5a7ab7a095f7a727800e6aef47e5651eec5a828b0889a4e425d2f3f7e5e9"
       },
       {
         "fromVersionCode": 2,
         "fromVersionName": "1.1.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v1.1.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 21691645,
-        "patchSha256": "5a1c4f3e34e07e586c778900699ffd5e29e5e3de6a3366080be3bd8886a7d5ec"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.1.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 21725428,
+        "patchSha256": "bb7249e1bf6a5bb761b19211366fefa90d8996b8512afda7c4a32a0315cedc5c"
       },
       {
         "fromVersionCode": 1,
         "fromVersionName": "1.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.0/Krono-v1.0.0-to-v2.1.0.kpatch",
-        "patchSizeBytes": 21690878,
-        "patchSha256": "cf3f3c9d2e27482b6c14274c34d27cd78d3383974ac730e083e1ede82034d110"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.0.0-to-v2.1.1.kpatch",
+        "patchSizeBytes": 21724723,
+        "patchSha256": "63403e181bdc06cacf41724612c2b9f4ee9f8d6e5669b07f7977a9f06d3b25c9"
       }
     ],
     "documentation": [
       {
-        "title": "Módulo Sob Demanda :feature_dokploy (Multi-Servidor)",
+        "title": "Uso, Containers & Métricas do Servidor (:feature_dokploy)",
         "items": [
-          "Split APK independente (195.988 bytes) totalmente isolado do :app Core via DokployFeatureEntry SPI, funcionando com qualquer instância Dokploy via HTTPS + header x-api-key configurado pelo próprio usuário no aplicativo.",
-          "Armazena domínios, labels e chaves com criptografia AES-256-GCM no Android Keystore (DokployCredentialStore), exibindo uso de CPU e memória RAM por aplicação, domínios + validação DNS, controle de containers Docker, logs ao vivo, logs de deploy, redeploy e editor de .env."
+          "DokployApiClient.loadWorkspace agora consulta /api/project.one em paralelo após /api/project.all (resolvendo appName, serverId e composeType) e cruza com docker.getContainers + swarm.getContainerStats (timeout 45s) + swarm.getNodeInfo + settings.getDockerDiskUsage.",
+          "DokployApplicationDetail carrega containers via docker.getContainersByAppNameMatch e exibe na aba Uso & Containers a porcentagem de RAM, vCPU e ações individuais por container."
         ]
       },
       {
-        "title": "Central de Módulos sem Código + Busca",
+        "title": "Logs de Compose & Terminal Acima da Dock",
         "items": [
-          "ModulesManagerScreen e KronoModuleManager consultam automaticamente /api/releases.json ao abrir (com filtro strict para o versionCode/versionName atual), exibindo status de sincronização (LOADING/SYNCED/OFFLINE/ERROR), pesquisa normalizada sem acentos, chips de filtro e instalação direta em 1 toque.",
-          "Integração opcional por deep link krono://setup ou código KRONO:... preservada em seção recolhível para kits compartilhados pela Landing Page #montar."
+          "Aba Logs seleciona automaticamente o primeiro container ativo de serviços Compose, renderiza barra de seleção com shortContainerLabel e abre o console em um Dialog tela cheia com Scaffold/SnackbarHost e imePadding() acima da FloatingBottomDock."
         ]
       },
       {
-        "title": "Sincronização com Krono IA",
+        "title": "Controle Estrito de Módulos na Atualização",
         "items": [
-          "DokployKnowledgeModule + trava AiModuleCoverage conectam o resumo seguro dos servidores, projetos, apps e domínios (sem jamais expor tokens ou .env) tanto ao Modo Rápido Offline quanto ao Qwen2.5-3B."
+          "KronoModuleCatalog.reconcileEmbeddedHiddenIds + optInByDefault mantêm novos módulos (como Dokploy) ocultos após atualizações do APK Universal caso o usuário não tenha contas salvas, enquanto isModularInstallation preserva aparelhos Core com 0 splits fora do APK Universal."
         ]
       },
       {
         "title": "Checksums & Patches Delta (KDP1)",
         "items": [
-          "APK Universal v2.1.0: Krono-v2.1.0.apk (36.197.847 bytes) — SHA-256: 5d3eeee2b6b809d6c7cd37ebce5df27f83008ac0cf953492db0ca00da4b6b21d",
-          "APK Core v2.1.0: Krono-core-v2.1.0.apk (14.869.830 bytes, -58,9%) — SHA-256: 66806ae924bc0c7ab337118e3788ac4dff0a75ad6009e6108f404baa83ee146d",
-          "8 Split APKs: tasks (74.048 B), focus (84.004 B), market (995.664 B), finance (13.251.008 B), goals (60.988 B), notes (47.732 B), qwen (6.615.701 B), dokploy (195.988 B)",
-          "Delta v2.0.0 -> v2.1.0 SHA-256: d0479f02a6cb72ff4b31e0adef08aedc54025a8ff3d31b8c326a00df5c07d3f8 (9.544.944 bytes, -73,63%)",
-          "Delta v1.5.0 -> v2.1.0 SHA-256: 3b69fcdf20a389e9fe433ab9244d01c467a72ac2a45c0074084bb68e3ef0472a (16.097.467 bytes, -55,53%)",
-          "Delta v1.4.0 -> v2.1.0 SHA-256: 3502ead9aa24127acf070d788b547c0c5e76c6e31e0babdc099e51325fd7f0cb (21.641.185 bytes, -40,21%)",
-          "Delta v1.3.0 -> v2.1.0 SHA-256: 623f9313e628b5c1036890215afd1b64f8d0f3834eae20da8d64a1a429b5ed62 (21.641.094 bytes, -40,21%)",
-          "Delta v1.2.0 -> v2.1.0 SHA-256: f8415d33444a72e12661c64e629d6f1b73987a93eae6c769779138ed4bda7a4e (21.692.037 bytes, -40,07%)",
-          "Delta v1.1.0 -> v2.1.0 SHA-256: 5a1c4f3e34e07e586c778900699ffd5e29e5e3de6a3366080be3bd8886a7d5ec (21.691.645 bytes, -40,07%)",
-          "Delta v1.0.0 -> v2.1.0 SHA-256: cf3f3c9d2e27482b6c14274c34d27cd78d3383974ac730e083e1ede82034d110 (21.690.878 bytes, -40,08%)"
+          "APK Universal v2.1.1: Krono-v2.1.1.apk (36.230.615 bytes) — SHA-256: df3fc28824bbc1a2bb829af2116b949ffa167b96e890005ab6b9d31e27ec6424",
+          "APK Core v2.1.1: Krono-core-v2.1.1.apk (14.886.210 bytes, -58,9%) — SHA-256: dfc8f02b2201b2059d6619b115ac20268d9e3e2632555e88941452daa6cf5a6d",
+          "8 Split APKs: tasks (74.048 B), focus (84.000 B), market (995.664 B), finance (13.251.008 B), goals (60.984 B), notes (47.728 B), qwen (6.615.697 B), dokploy (226.152 B)",
+          "Delta v2.1.0 -> v2.1.1 SHA-256: c956038a236fb04b2e41efe6a1629cb529128d945eb074fbb4a1f8164b01866b (2.760.793 bytes, -92,38%)",
+          "Delta v2.0.0 -> v2.1.1 SHA-256: 4e34b4f978a8c4f94912b8da1de8103cd7b527a991f014caeb0a4af79b8ee860 (9.578.457 bytes, -73,56%)",
+          "Delta v1.5.0 -> v2.1.1 SHA-256: fd445b09ef583bb4f7917d8cd9b6a36517cea190d1b88033185a765ad0781d8f (16.131.742 bytes, -55,47%)",
+          "Delta v1.4.0 -> v2.1.1 SHA-256: 7ef478a56b832a9e8530fd298452179b57462c466589adecc61ccde0d47a0d5e (21.675.803 bytes, -40,17%)",
+          "Delta v1.3.0 -> v2.1.1 SHA-256: 1145f072760346f14834d7a0b3e4883c78719f7658a49be0fd3ef0fe4a6e2d9b (21.675.726 bytes, -40,17%)",
+          "Delta v1.2.0 -> v2.1.1 SHA-256: 6d1b5a7ab7a095f7a727800e6aef47e5651eec5a828b0889a4e425d2f3f7e5e9 (21.725.818 bytes, -40,03%)",
+          "Delta v1.1.0 -> v2.1.1 SHA-256: bb7249e1bf6a5bb761b19211366fefa90d8996b8512afda7c4a32a0315cedc5c (21.725.428 bytes, -40,04%)",
+          "Delta v1.0.0 -> v2.1.1 SHA-256: 63403e181bdc06cacf41724612c2b9f4ee9f8d6e5669b07f7977a9f06d3b25c9 (21.724.723 bytes, -40,04%)"
         ]
       }
     ],
     "signatureAlg": "SHA256withRSA",
-    "signature": "CWu41f/NR5BFnsQT3zubj3RsWR6BPZk2nLN+ZNDvi5LcynOh7WlCnAJzT7h+b78JGXyBg6V3DIXyIkjvFgWYAJiQ4MySGKv7mIpwo3vL2FzP8X0OqzSrj6P25LDhr59E3Ba3aaYEwXdti+7JmUtBSFt2BPoip+cnRJAnBvxZnvxZhJuXJonxt30WEwtrJ1YOQrnwVplNhczDR3MDrckFoaPg0e10/5LlOHLr0Td+ty8LJsjLL6jqssBKH0wgjzq3ghKpBaoE0UDucwvdRVw2OBLCTQq4nzaZsrscJFx9KHC4rhMOLse11VGypKC3IKr+OEQ/1ahqHFz9NKaVgDxnfw==",
-    "modulesSignature": "C+W2YhkwfiDnixK/MCwUnlVPViBOnO2PDzWygTkkNA7fuHxB5uGxWJ0BSeiOsiPxbTCHptSiUJ5mjrNN/AtoWhF0GiXZHJ1pHUJOt9UhrwkChH6RlTFAcnOt8W5Km0Qkqwhk8fTj0aiBk+KrUwplL46IFzYINRWtBFWAX3JHMXkVUaWY0fjgLJpV0WL5N00kItUciWpWvVHRQN6g30YZ1wIudgvFtnLlPZFBt09zB+isVOy6r+Ut+TUAkfHpJPAkia3I3nebWy1NjnELNkpOhdpzoqg82gKAaNCc7XYZ+lbpT+XI3NLWMje1Yeg3rIsBWDDtsJdTJn3zKGuGb72Nfw=="
+    "signature": "hJvoKjR+uJMoXI8g4zqTv6WqqjKdSDNrV2UrdHzNmiI8l+l0M7X33ENewUUbsAPhDQ5JO/CmrLM30V8MRSL/4I4hp+NMgzBHzoBjaq4WK6MbSyaNgT21hei3WiFkbWDFju9SvnpPY4CICXTJeUNFe9JKJ0N7aFB1EMcETXidZ0QJC+yPLytWf7sP4zKmoqSZTuycwomaznccoxIk9dnbYJMpi+yveEira+Svf6cdYJbtqMwQ9PCWU/evCbAdFRn1j75EQHS8NvhFzG4g2gQ18XVFsDsa88izgyIkqGXE7HrDYIIwS1Fl0iNBsYFkBzzItvTOJFpFDfPnY/z5QfgNoQ==",
+    "modulesSignature": "PbE8rAchWcRvBPXmTGMBh2QkABtsEkbj6IzP4GRo+bo/GtoiOvLCFX6cekTx9jodsq1mqCFKysiVwmrW1+gY0Nw5rjQ9d6TUo2vq/UzXCDtk6OjVksR7nkpVxsw6qK982ZZM+rajPnJvsm87iYhkxQBV0M5P6Z1d9P+WWl/a+QT/0QFiHKAbpVH59Bnb90q4Gdk5vdVe2QyubU0qZEIpP2S9kfl1JzXLF4Md0P9KRGowxbTYW9smUxVKLs68csW86DpgiaJsIkeLySBD/kMS/rF9+eaANm7eqTwWdh1rAWeZ5DkPgZAFzkQIb2saddryYcTVHsJQwSN6QBO0k1Trbg=="
   },
   "versions": [
+    {
+      "versionCode": 9,
+      "versionName": "2.1.1",
+      "releasedAt": "2026-11-22",
+      "channel": "production",
+      "summary": "Correções essenciais no módulo :feature_dokploy (containers e uso por aplicação agora populados via project.one + docker.getContainersByAppNameMatch, métricas reais de vCPU/RAM/disco Docker do nó host, seletor automático de containers do Compose em Logs e terminal em Dialog acima da barra de módulos) além de opt-in manual garantindo que módulos novos não ativem sozinhos ao atualizar o app.",
+      "highlights": [
+        "Uso & Containers corrigidos: project.one + getContainersByAppNameMatch vinculam 100% dos apps/compose às métricas reais",
+        "Métricas reais do servidor (vCPU, RAM do host via swarm.getNodeInfo e disco Docker) e consumo detalhado por aplicação",
+        "Seletor de containers do Compose nos Logs com carregamento automático e Console em Dialog acima da barra inferior",
+        "Módulos opt-in e recém-adicionados (como Dokploy) nunca ativam automaticamente durante atualizações do app"
+      ],
+      "changelog": [
+        "Correção da causa raiz em Uso & Containers (DokployApiClient): enriquecimento paralelo com /api/project.one (pois /api/project.all omite appName/composeType), combinação com /api/docker.getContainersByAppNameMatch e fallback/timeout de 45s para /api/swarm.getContainerStats com aviso explícito de statsError",
+        "Leitura de hardware real do servidor via /api/swarm.getNodes + /api/swarm.getNodeInfo (hostname, arquitetura, vCPU e RAM total) e uso de disco Docker via /api/settings.getDockerDiskUsage, exibindo % real de RAM e CPU por aplicação e no servidor",
+        "Correção dos Logs de Compose (DokployDetailSheet): pré-seleção automática do primeiro container ativo, chips destacados com shortContainerLabel + indicador de status, carregamento automático na troca de aba/container e atalho de terminal em cada ContainerStatsCard",
+        "Correção de layout do Console/Terminal: DokployServiceDetailOverlay encapsulado em Dialog tela cheia com Scaffold/SnackbarHost próprios e imePadding(), permanecendo totalmente acima da FloatingBottomDock",
+        "Opt-in garantido na atualização (KronoModuleCatalog, KronoModuleManager, AppUpdateManager): optInByDefault no Dokploy + reconcileEmbeddedHiddenIds mantêm módulos novos ocultos até ativação manual e isModularInstallation preserva aparelhos Core com 0 splits no fluxo modular"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v2.1.1.apk",
+      "apkSizeBytes": 36230615,
+      "sha256": "df3fc28824bbc1a2bb829af2116b949ffa167b96e890005ab6b9d31e27ec6424",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "coreApkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-core-v2.1.1.apk",
+      "coreApkSizeBytes": 14886210,
+      "coreSha256": "dfc8f02b2201b2059d6619b115ac20268d9e3e2632555e88941452daa6cf5a6d",
+      "modules": [
+        {
+          "id": "tasks",
+          "splitName": "feature_tasks",
+          "name": "Tarefas & Rotina",
+          "description": "Hábitos recorrentes, prioridades, subtarefas, XP e lembretes exatos.",
+          "category": "Produtividade",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-tasks-v2.1.1.apk",
+          "apkSizeBytes": 74048,
+          "sha256": "7b40a150e5ac323a0a58f992cfd18c7ec3155d4786778af4382c8fa3c673e570"
+        },
+        {
+          "id": "focus",
+          "splitName": "feature_focus",
+          "name": "Foco & Tempo de Tela",
+          "description": "Pomodoro em foreground, bloqueio de distrações e limites de uso de apps.",
+          "category": "Bem-estar Digital",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-focus-v2.1.1.apk",
+          "apkSizeBytes": 84000,
+          "sha256": "b77f27b093bba03b2edb6cace0d0584b0f7683737a0f047c25f9d9246102dfbf"
+        },
+        {
+          "id": "market",
+          "splitName": "feature_market",
+          "name": "Mercado & Preços",
+          "description": "Scanner de código de barras, comparação de preços, carrinho e histórico.",
+          "category": "Dia a Dia",
+          "highlightNote": "Scanner CameraX + ZXing",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-market-v2.1.1.apk",
+          "apkSizeBytes": 995664,
+          "sha256": "aec909dd62d517f783d8af08510dd4358f5bc2ac627cc25a037db2e0b83233f8"
+        },
+        {
+          "id": "finance",
+          "splitName": "feature_finance",
+          "name": "Área Financeira",
+          "description": "Receitas, despesas, parcelas em até 36x, simulador, calendário e OCR.",
+          "category": "Financeiro",
+          "highlightNote": "OCR offline ML Kit (~13,2 MB)",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-finance-v2.1.1.apk",
+          "apkSizeBytes": 13251008,
+          "sha256": "38cd4ece267d7d47cbcd0e90a3f048afa0aa7afa639b2d74853ec37769c4c15f"
+        },
+        {
+          "id": "goals",
+          "splitName": "feature_goals",
+          "name": "Metas & Marcos",
+          "description": "Metas quantitativas com marcos automáticos, prazo e progresso.",
+          "category": "Planejamento",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-goals-v2.1.1.apk",
+          "apkSizeBytes": 60984,
+          "sha256": "4355bf564ea2bfcdc178b4885c121419d08c0472a58eabb6c6a8e4e2dbfa2ed2"
+        },
+        {
+          "id": "notes",
+          "splitName": "feature_notes",
+          "name": "Notas & Checklists",
+          "description": "Notas fixáveis, etiquetas por cor/tag e checklists interativos.",
+          "category": "Organização",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-notes-v2.1.1.apk",
+          "apkSizeBytes": 47728,
+          "sha256": "fa7aa51c885c6a5b34c1bbf86e976f43aa8bc328a1941b5c98009b123cd22939"
+        },
+        {
+          "id": "qwen",
+          "splitName": "feature_qwen",
+          "name": "Motor Qwen2.5-3B (C++)",
+          "description": "Motor nativo llama.cpp ARM64 para conversas com LLM offline local.",
+          "category": "IA Avançada",
+          "highlightNote": "Motor nativo llama.cpp (~6,6 MB)",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-qwen-v2.1.1.apk",
+          "apkSizeBytes": 6615697,
+          "sha256": "b0d72a041ef62c9de93994b2e2bf1e3e00b64e1d085adff01f520cb813d70a04"
+        },
+        {
+          "id": "dokploy",
+          "splitName": "feature_dokploy",
+          "name": "Dokploy & Servidores",
+          "description": "Gerencie múltiplas contas Dokploy por API Key, domínios, CPU/RAM por app, containers, logs e .env.",
+          "category": "Infraestrutura",
+          "highlightNote": "Multi-conta HTTPS + Keystore",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-module-dokploy-v2.1.1.apk",
+          "apkSizeBytes": 226152,
+          "sha256": "5d4c825a3928d3d18280977f63975fea3c8865b756bb9a15f690a735d6cb6900"
+        }
+      ],
+      "patches": [
+        {
+          "fromVersionCode": 8,
+          "fromVersionName": "2.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v2.1.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 2760793,
+          "patchSha256": "c956038a236fb04b2e41efe6a1629cb529128d945eb074fbb4a1f8164b01866b"
+        },
+        {
+          "fromVersionCode": 7,
+          "fromVersionName": "2.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v2.0.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 9578457,
+          "patchSha256": "4e34b4f978a8c4f94912b8da1de8103cd7b527a991f014caeb0a4af79b8ee860"
+        },
+        {
+          "fromVersionCode": 6,
+          "fromVersionName": "1.5.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.5.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 16131742,
+          "patchSha256": "fd445b09ef583bb4f7917d8cd9b6a36517cea190d1b88033185a765ad0781d8f"
+        },
+        {
+          "fromVersionCode": 5,
+          "fromVersionName": "1.4.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.4.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 21675803,
+          "patchSha256": "7ef478a56b832a9e8530fd298452179b57462c466589adecc61ccde0d47a0d5e"
+        },
+        {
+          "fromVersionCode": 4,
+          "fromVersionName": "1.3.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.3.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 21675726,
+          "patchSha256": "1145f072760346f14834d7a0b3e4883c78719f7658a49be0fd3ef0fe4a6e2d9b"
+        },
+        {
+          "fromVersionCode": 3,
+          "fromVersionName": "1.2.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.2.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 21725818,
+          "patchSha256": "6d1b5a7ab7a095f7a727800e6aef47e5651eec5a828b0889a4e425d2f3f7e5e9"
+        },
+        {
+          "fromVersionCode": 2,
+          "fromVersionName": "1.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.1.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 21725428,
+          "patchSha256": "bb7249e1bf6a5bb761b19211366fefa90d8996b8512afda7c4a32a0315cedc5c"
+        },
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.1.1/Krono-v1.0.0-to-v2.1.1.kpatch",
+          "patchSizeBytes": 21724723,
+          "patchSha256": "63403e181bdc06cacf41724612c2b9f4ee9f8d6e5669b07f7977a9f06d3b25c9"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Uso, Containers & Métricas do Servidor (:feature_dokploy)",
+          "items": [
+            "DokployApiClient.loadWorkspace agora consulta /api/project.one em paralelo após /api/project.all (resolvendo appName, serverId e composeType) e cruza com docker.getContainers + swarm.getContainerStats (timeout 45s) + swarm.getNodeInfo + settings.getDockerDiskUsage.",
+            "DokployApplicationDetail carrega containers via docker.getContainersByAppNameMatch e exibe na aba Uso & Containers a porcentagem de RAM, vCPU e ações individuais por container."
+          ]
+        },
+        {
+          "title": "Logs de Compose & Terminal Acima da Dock",
+          "items": [
+            "Aba Logs seleciona automaticamente o primeiro container ativo de serviços Compose, renderiza barra de seleção com shortContainerLabel e abre o console em um Dialog tela cheia com Scaffold/SnackbarHost e imePadding() acima da FloatingBottomDock."
+          ]
+        },
+        {
+          "title": "Controle Estrito de Módulos na Atualização",
+          "items": [
+            "KronoModuleCatalog.reconcileEmbeddedHiddenIds + optInByDefault mantêm novos módulos (como Dokploy) ocultos após atualizações do APK Universal caso o usuário não tenha contas salvas, enquanto isModularInstallation preserva aparelhos Core com 0 splits fora do APK Universal."
+          ]
+        },
+        {
+          "title": "Checksums & Patches Delta (KDP1)",
+          "items": [
+            "APK Universal v2.1.1: Krono-v2.1.1.apk (36.230.615 bytes) — SHA-256: df3fc28824bbc1a2bb829af2116b949ffa167b96e890005ab6b9d31e27ec6424",
+            "APK Core v2.1.1: Krono-core-v2.1.1.apk (14.886.210 bytes, -58,9%) — SHA-256: dfc8f02b2201b2059d6619b115ac20268d9e3e2632555e88941452daa6cf5a6d",
+            "8 Split APKs: tasks (74.048 B), focus (84.000 B), market (995.664 B), finance (13.251.008 B), goals (60.984 B), notes (47.728 B), qwen (6.615.697 B), dokploy (226.152 B)",
+            "Delta v2.1.0 -> v2.1.1 SHA-256: c956038a236fb04b2e41efe6a1629cb529128d945eb074fbb4a1f8164b01866b (2.760.793 bytes, -92,38%)",
+            "Delta v2.0.0 -> v2.1.1 SHA-256: 4e34b4f978a8c4f94912b8da1de8103cd7b527a991f014caeb0a4af79b8ee860 (9.578.457 bytes, -73,56%)",
+            "Delta v1.5.0 -> v2.1.1 SHA-256: fd445b09ef583bb4f7917d8cd9b6a36517cea190d1b88033185a765ad0781d8f (16.131.742 bytes, -55,47%)",
+            "Delta v1.4.0 -> v2.1.1 SHA-256: 7ef478a56b832a9e8530fd298452179b57462c466589adecc61ccde0d47a0d5e (21.675.803 bytes, -40,17%)",
+            "Delta v1.3.0 -> v2.1.1 SHA-256: 1145f072760346f14834d7a0b3e4883c78719f7658a49be0fd3ef0fe4a6e2d9b (21.675.726 bytes, -40,17%)",
+            "Delta v1.2.0 -> v2.1.1 SHA-256: 6d1b5a7ab7a095f7a727800e6aef47e5651eec5a828b0889a4e425d2f3f7e5e9 (21.725.818 bytes, -40,03%)",
+            "Delta v1.1.0 -> v2.1.1 SHA-256: bb7249e1bf6a5bb761b19211366fefa90d8996b8512afda7c4a32a0315cedc5c (21.725.428 bytes, -40,04%)",
+            "Delta v1.0.0 -> v2.1.1 SHA-256: 63403e181bdc06cacf41724612c2b9f4ee9f8d6e5669b07f7977a9f06d3b25c9 (21.724.723 bytes, -40,04%)"
+          ]
+        }
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "hJvoKjR+uJMoXI8g4zqTv6WqqjKdSDNrV2UrdHzNmiI8l+l0M7X33ENewUUbsAPhDQ5JO/CmrLM30V8MRSL/4I4hp+NMgzBHzoBjaq4WK6MbSyaNgT21hei3WiFkbWDFju9SvnpPY4CICXTJeUNFe9JKJ0N7aFB1EMcETXidZ0QJC+yPLytWf7sP4zKmoqSZTuycwomaznccoxIk9dnbYJMpi+yveEira+Svf6cdYJbtqMwQ9PCWU/evCbAdFRn1j75EQHS8NvhFzG4g2gQ18XVFsDsa88izgyIkqGXE7HrDYIIwS1Fl0iNBsYFkBzzItvTOJFpFDfPnY/z5QfgNoQ==",
+      "modulesSignature": "PbE8rAchWcRvBPXmTGMBh2QkABtsEkbj6IzP4GRo+bo/GtoiOvLCFX6cekTx9jodsq1mqCFKysiVwmrW1+gY0Nw5rjQ9d6TUo2vq/UzXCDtk6OjVksR7nkpVxsw6qK982ZZM+rajPnJvsm87iYhkxQBV0M5P6Z1d9P+WWl/a+QT/0QFiHKAbpVH59Bnb90q4Gdk5vdVe2QyubU0qZEIpP2S9kfl1JzXLF4Md0P9KRGowxbTYW9smUxVKLs68csW86DpgiaJsIkeLySBD/kMS/rF9+eaANm7eqTwWdh1rAWeZ5DkPgZAFzkQIb2saddryYcTVHsJQwSN6QBO0k1Trbg=="
+    },
     {
       "versionCode": 8,
       "versionName": "2.1.0",
       "releasedAt": "2026-11-22",
-      "channel": "production",
+      "channel": "archive",
       "summary": "Central de Módulos com sincronização automática sem código, barra de pesquisa instantânea e novo módulo dinâmico :feature_dokploy (195,99 KB) para gerenciar múltiplas contas Dokploy por API Key, domínios, CPU/RAM por app, containers, logs e .env integrado à Krono IA.",
       "highlights": [
         "Novo módulo sob demanda :feature_dokploy (195,99 KB) multi-servidor via HTTPS e API Key",
