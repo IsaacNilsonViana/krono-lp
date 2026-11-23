@@ -6,6 +6,18 @@ export interface DeltaPatchInfo {
   patchSha256: string;
 }
 
+export interface RemoteModuleSplit {
+  id: string;
+  splitName: string;
+  name: string;
+  description?: string;
+  category?: string;
+  highlightNote?: string;
+  apkUrl: string;
+  apkSizeBytes: number;
+  sha256: string;
+}
+
 export interface DocumentationSection {
   title: string;
   items: string[];
@@ -25,6 +37,11 @@ export interface ReleaseInfo {
   minSdk: number;
   abi?: string;
   patches: DeltaPatchInfo[];
+  coreApkUrl?: string;
+  coreApkSizeBytes?: number;
+  coreSha256?: string;
+  modules?: RemoteModuleSplit[];
+  modulesSignature?: string;
   documentation: DocumentationSection[];
   signatureAlg?: string;
   signature?: string;

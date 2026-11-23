@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  ArrowRight,
   Award,
   BellRing,
   Bot,
@@ -18,6 +17,7 @@ import {
 } from 'lucide-react';
 import PhoneShowcase from './components/PhoneShowcase';
 import InteractiveAppPreview from './components/InteractiveAppPreview';
+import ModularBuilderSection from './components/ModularBuilderSection';
 import ReleasesSection from './components/ReleasesSection';
 import { ReleasesManifest } from './types';
 
@@ -107,6 +107,9 @@ const App: React.FC = () => {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-medium text-[#9BA6C7] md:flex">
+            <a href="#montar" className="transition hover:text-white">
+              Montar App
+            </a>
             <a href="#previa" className="transition hover:text-white">
               Prévia ao vivo
             </a>
@@ -115,9 +118,6 @@ const App: React.FC = () => {
             </a>
             <a href="#ia-offline" className="transition hover:text-white">
               IA Offline
-            </a>
-            <a href="#updater" className="transition hover:text-white">
-              Auto-Update Delta
             </a>
             <a href="#versoes" className="transition hover:text-white">
               Versões & Docs
@@ -160,27 +160,26 @@ const App: React.FC = () => {
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href={latest.apkUrl}
+                href="#montar"
                 className="inline-flex items-center gap-2.5 rounded-2xl bg-[#7C5CFF] px-6 py-3.5 text-sm font-bold text-white shadow-[0_5px_0_#5336CC] transition hover:-translate-y-0.5 hover:bg-[#6A48F5] sm:text-base"
               >
-                <Download className="h-5 w-5" />
-                Baixar Krono v{latest.versionName} ({latestSizeMb} MB)
+                <Sparkles className="h-5 w-5" />
+                Montar Krono ({latestSizeMb} MB máx.)
+              </a>
+
+              <a
+                href={latest.apkUrl}
+                className="inline-flex items-center gap-2 rounded-2xl border border-[#00D68F]/50 bg-[#141928] px-5 py-3.5 text-sm font-semibold text-[#00D68F] transition hover:border-[#00D68F] hover:bg-[#1C2338] sm:text-base"
+              >
+                <Download className="h-4 w-4" />
+                Baixar completo v{latest.versionName}
               </a>
 
               <a
                 href="#previa"
                 className="inline-flex items-center gap-2 rounded-2xl border border-[#00C2FF]/50 bg-[#141928] px-5 py-3.5 text-sm font-semibold text-[#00C2FF] transition hover:border-[#00C2FF] hover:bg-[#1C2338] sm:text-base"
               >
-                <Sparkles className="h-4 w-4" />
                 Testar prévia ao vivo
-              </a>
-
-              <a
-                href="#versoes"
-                className="inline-flex items-center gap-2 rounded-2xl border border-[#28324F] bg-[#141928] px-5 py-3.5 text-sm font-semibold text-[#F6F8FF] transition hover:border-[#00C2FF] hover:text-[#00C2FF] sm:text-base"
-              >
-                Histórico & Documentação
-                <ArrowRight className="h-4 w-4" />
               </a>
             </div>
 
@@ -209,6 +208,9 @@ const App: React.FC = () => {
           <PhoneShowcase />
         </div>
       </section>
+
+      {/* Modular Builder */}
+      <ModularBuilderSection latest={latest} />
 
       {/* Interactive Browser Preview */}
       <InteractiveAppPreview />

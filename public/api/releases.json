@@ -1,108 +1,384 @@
 {
   "latest": {
-    "versionCode": 6,
-    "versionName": "1.5.0",
-    "releasedAt": "2026-11-20",
+    "versionCode": 7,
+    "versionName": "2.0.0",
+    "releasedAt": "2026-11-22",
     "channel": "production",
-    "summary": "Nova Área Financeira 100% offline com receitas/despesas, contas mensais, parcelamento em até 36x, OCR no aparelho para boletos e comprovantes (imagens e PDFs), calendário de vencimentos, simulador de compras e lembretes locais.",
+    "summary": "Krono agora é modular (Krono Core + 7 Split APKs sob demanda reduzindo o download inicial para 14,80 MB, -58,8%), traz Central de Módulos no app, Construtor #montar na Landing Page e Krono IA Modular sincronizada em tempo real com Finanças, Mercado e todos os módulos ativos.",
     "highlights": [
-      "Módulo Financeiro offline completo com Resumo, Calendário, Simulador e Ajustes",
-      "OCR on-device para boletos, comprovantes Pix e cupons em imagem ou PDF (até 5 páginas)",
-      "Contas mensais recorrentes, parcelamentos 1x..36x com centavos exatos e controle por parcela",
-      "Lembretes locais configuráveis (0..3 dias antes) + Room v7 e Backup JSON"
+      "Krono Core leve (14,80 MB vs 35,94 MB) com 7 Split APKs independentes sob demanda",
+      "OCR ML Kit offline (13,25 MB) e motor llama.cpp ARM64 (6,62 MB) isolados em splits próprios",
+      "Central de Módulos no app (instalação em lote, remoção real de splits e deep link krono://setup)",
+      "Krono IA Modular com conhecimento completo de Finanças, Mercado e todos os módulos ativos"
     ],
     "changelog": [
-      "Novo módulo Finanças (KronoTab.FINANCE) integrado ao Tema Obsidian Arcade, ao dock expansível e ao card Finanças do Mês no Dashboard",
-      "Controle de receitas e despesas com sugestão automática de categoria, contas recorrentes mensais e parcelamentos em até 36x com arredondamento exato dos centavos",
-      "Anexos separados para boleto e comprovante guardados no armazenamento privado (files/finance_attachments/) com leitura OCR offline via ML Kit + PdfRenderer",
-      "Calendário mensal interativo de vencimentos e simulador de compras futuras sem alterar os lançamentos salvos",
-      "Notificações locais às 09:00 de 0 a 3 dias antes do vencimento, migração segura Room v6 -> v7 (MIGRATION_6_7) e backup/restauração JSON"
+      "Divisão modular real em :app Core (14,80 MB) + 7 Android Dynamic Feature APKs (:feature_tasks, :feature_focus, :feature_market, :feature_finance, :feature_goals, :feature_notes e :feature_qwen)",
+      "Isolamento completo de ML Kit OCR (libmlkit_google_ocr_pipeline.so) em :feature_finance, llama.cpp C++ ARM64 (libkrono_llama.so) em :feature_qwen e CameraX/ZXing em :feature_market",
+      "Nova Central de Módulos (ModulesManagerScreen) com seleção em lote via PackageInstaller(MODE_INHERIT_EXISTING), remoção real (removeSplit) com limpeza opcional de dados e importação krono://setup ou KRONO:...",
+      "Assinatura dupla SHA256withRSA retrocompatível no manifesto (signature + modulesSignature) e validação local de SHA-256, certificado assinante oficial, versionCode e splitName por split",
+      "Krono IA Modular (AiModuleRegistry + trava em compilação AiModuleCoverage) cobrindo Finanças (saldo, parcelas, vencimentos, categorias), Mercado (preços por produto e carrinho) e resumo geral no Modo Rápido e no Qwen2.5-3B"
     ],
-    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.5.0.apk",
-    "apkSizeBytes": 35828261,
-    "sha256": "36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0",
+    "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v2.0.0.apk",
+    "apkSizeBytes": 35935644,
+    "sha256": "4d89a316a0f96e7d6c7b57431b0dc974f1c897da4e4ffa63704b3f712bb729af",
     "minSdk": 26,
     "abi": "arm64-v8a",
+    "coreApkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-core-v2.0.0.apk",
+    "coreApkSizeBytes": 14803870,
+    "coreSha256": "bca75ef81dc641d01a91eedd7f7eb1d9fb7d13662a13b65a334c0b4dfcc7d458",
+    "modules": [
+      {
+        "id": "tasks",
+        "splitName": "feature_tasks",
+        "name": "Tarefas & Rotina",
+        "description": "Hábitos recorrentes, prioridades, subtarefas, XP e lembretes exatos.",
+        "category": "Produtividade",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-tasks-v2.0.0.apk",
+        "apkSizeBytes": 74048,
+        "sha256": "f9bb520e4dfb46be5c3ca9f4f5f64420e5651a68a3eace9244741a6dcae2ac16"
+      },
+      {
+        "id": "focus",
+        "splitName": "feature_focus",
+        "name": "Foco & Tempo de Tela",
+        "description": "Pomodoro em foreground, bloqueio de distrações e limites de uso de apps.",
+        "category": "Bem-estar Digital",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-focus-v2.0.0.apk",
+        "apkSizeBytes": 84000,
+        "sha256": "8429a943542e94e3163f1bb7b1c7aa69d66c0490a37861147dec8c66b79b20e5"
+      },
+      {
+        "id": "market",
+        "splitName": "feature_market",
+        "name": "Mercado & Preços",
+        "description": "Scanner de código de barras, comparação de preços, carrinho e histórico.",
+        "category": "Dia a Dia",
+        "highlightNote": "Scanner CameraX + ZXing",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-market-v2.0.0.apk",
+        "apkSizeBytes": 995664,
+        "sha256": "2322879216456af1a46e3fafe95a920685b2c9717cab6e3c25359c3607e9f413"
+      },
+      {
+        "id": "finance",
+        "splitName": "feature_finance",
+        "name": "Área Financeira",
+        "description": "Receitas, despesas, parcelas em até 36x, simulador, calendário e OCR.",
+        "category": "Financeiro",
+        "highlightNote": "OCR offline ML Kit (~13,2 MB)",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-finance-v2.0.0.apk",
+        "apkSizeBytes": 13251008,
+        "sha256": "5a6403b39ebd4dc82f56fc6f53ebc75df756fab33050bcd82e352c8d21491eab"
+      },
+      {
+        "id": "goals",
+        "splitName": "feature_goals",
+        "name": "Metas & Marcos",
+        "description": "Metas quantitativas com marcos automáticos, prazo e progresso.",
+        "category": "Planejamento",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-goals-v2.0.0.apk",
+        "apkSizeBytes": 60984,
+        "sha256": "0ba3b5af6a30273466ca10147d56504eda12a743d6181bf843a8d88331b9c303"
+      },
+      {
+        "id": "notes",
+        "splitName": "feature_notes",
+        "name": "Notas & Checklists",
+        "description": "Notas fixáveis, etiquetas por cor/tag e checklists interativos.",
+        "category": "Organização",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-notes-v2.0.0.apk",
+        "apkSizeBytes": 47728,
+        "sha256": "e41b22b969b038c33ea6ee4d9b2c33b33b861bff1162661a08448e849d65d1dc"
+      },
+      {
+        "id": "qwen",
+        "splitName": "feature_qwen",
+        "name": "Motor Qwen2.5-3B (C++)",
+        "description": "Motor nativo llama.cpp ARM64 para conversas com LLM offline local.",
+        "category": "IA Avançada",
+        "highlightNote": "Motor nativo llama.cpp (~6,6 MB)",
+        "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-qwen-v2.0.0.apk",
+        "apkSizeBytes": 6615701,
+        "sha256": "752f03a4c82e8d311f1b2d87740b4dfeb3e3644ac7726656cdb54ab01c4e6236"
+      }
+    ],
     "patches": [
+      {
+        "fromVersionCode": 6,
+        "fromVersionName": "1.5.0",
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.5.0-to-v2.0.0.kpatch",
+        "patchSizeBytes": 15842314,
+        "patchSha256": "d810c35d79e23be8d03a4c56f73073da3924182d56625f7b49c7a406ddbbee53"
+      },
       {
         "fromVersionCode": 5,
         "fromVersionName": "1.4.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.4.0-to-v1.5.0.kpatch",
-        "patchSizeBytes": 21333209,
-        "patchSha256": "f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.4.0-to-v2.0.0.kpatch",
+        "patchSizeBytes": 21389680,
+        "patchSha256": "4a445ce0b299ff4781e5c3c4d7880d57744dc9f7e0c08bef387780937be13561"
       },
       {
         "fromVersionCode": 4,
         "fromVersionName": "1.3.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.3.0-to-v1.5.0.kpatch",
-        "patchSizeBytes": 21333160,
-        "patchSha256": "7d9a0b37108607f2e871b623b82d95d09a17d8b3fab12202b0dc94883f6284e2"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.3.0-to-v2.0.0.kpatch",
+        "patchSizeBytes": 21389575,
+        "patchSha256": "ed530e76ec67df55bdc460721432294d2038d03536b31dbc443571d7850f37d7"
       },
       {
         "fromVersionCode": 3,
         "fromVersionName": "1.2.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.2.0-to-v1.5.0.kpatch",
-        "patchSizeBytes": 21391264,
-        "patchSha256": "c1b926cc33d2309f0b2849a58d9bf23a69396dbf4af62fdeb35f31ac105005bf"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.2.0-to-v2.0.0.kpatch",
+        "patchSizeBytes": 21437400,
+        "patchSha256": "0c54375140a4561fec0c889aaba0b32b689f591ddefde034c6bf15423a518542"
       },
       {
         "fromVersionCode": 2,
         "fromVersionName": "1.1.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.1.0-to-v1.5.0.kpatch",
-        "patchSizeBytes": 21390893,
-        "patchSha256": "8097d71cbebf6aae3c1fc5fabed24dbbe69f427a42ef2b8adc0e332a84866c66"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.1.0-to-v2.0.0.kpatch",
+        "patchSizeBytes": 21437001,
+        "patchSha256": "05516eb5913979634fb84728fd31c505cb233c14048be7d87fde984b192febfc"
       },
       {
         "fromVersionCode": 1,
         "fromVersionName": "1.0.0",
-        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v1.5.0/Krono-v1.0.0-to-v1.5.0.kpatch",
-        "patchSizeBytes": 21390189,
-        "patchSha256": "c4131a5b38e7e0e43cdd312e2d5e9116abf9de3bdf4a1a62dabdbd3267bf48f1"
+        "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.0.0-to-v2.0.0.kpatch",
+        "patchSizeBytes": 21436268,
+        "patchSha256": "a33d9bf67c558bb2adb2d7e9942cddd0d5cf695e144c09ecfe42c040aa740b4a"
       }
     ],
     "documentation": [
       {
-        "title": "Gestão Financeira Offline, Parcelas & Simulador",
+        "title": "Arquitetura Modular (Krono Core + 7 Split APKs)",
         "items": [
-          "FinanceEngine controla receitas, despesas, recorrências mensais e compras em até 36x preservando soma exata dos centavos e ajustando vencimentos de fim de mês.",
-          "Cada ocorrência mantém status Pago/Recebido, data de pagamento e comprovante independentes, além de simulador mensal que projeta o impacto de compras futuras sem alterar os dados reais."
+          "O aplicativo foi separado no módulo base :app (Krono Core, 14.803.870 bytes, isSplitRequired=false) e 7 dynamic features com <dist:on-demand />: feature_tasks, feature_focus, feature_market, feature_finance, feature_goals, feature_notes e feature_qwen.",
+          "Binários nativos pesados permanecem isolados por split: libmlkit_google_ocr_pipeline.so em feature_finance, libkrono_llama.so ARM64 em feature_qwen e JNI CameraX/ZXing em feature_market, mantendo o APK Universal completo (Krono-v2.0.0.apk, 35.935.644 bytes) disponível para instalação offline em 1 arquivo."
         ]
       },
       {
-        "title": "OCR On-Device (Boletos, Pix & PDFs)",
+        "title": "Central de Módulos, Segurança & Deep Link",
         "items": [
-          "FinanceAttachmentManager copia arquivos selecionados ou fotos da câmera para files/finance_attachments/ e executa ML Kit Text Recognition localmente (incluindo PdfRenderer até 5 páginas).",
-          "FinanceDocumentParser identifica estabelecimento/beneficiário, valor total, datas de vencimento/pagamento, categoria sugerida e detalhes de itens, encargos e descontos para revisão."
+          "KronoModuleManager + ModulesManagerScreen permitem baixar em lote via PackageInstaller(MODE_INHERIT_EXISTING), remover splits reais via session.removeSplit com limpeza opcional de dados (clearModuleData) ou importar seleções da Landing Page via krono://setup?modules=... e código KRONO:...",
+          "Manifesto assinado duplamente em RSA-2048 (signature para OTA v1.x e modulesSignature sobre krono-modules-v1) com verificação local via AppUpdateSecurity.verifySplitApkOnDevice (SHA-256, certificado oficial pinado db0bfd...37b6, versionCode e splitName)."
         ]
       },
       {
-        "title": "Room v7, Backup JSON & Lembretes Locais",
+        "title": "Krono IA Modular & Sempre Atualizada",
         "items": [
-          "MIGRATION_6_7 cria finance_entries e campos financeNotificationsEnabled/financeReminderDaysBefore em user_settings mantendo todos os dados existentes e integrando com BackupManager.",
-          "ReminderScheduler / ReminderReceiver disparam notificações locais de vencimento às 09:00 com antecedência configurável de 0 a 3 dias."
+          "AiKnowledgeModule + AiModuleRegistry + trava de compilação AiModuleCoverage sincronizam automaticamente Modo Rápido Offline e Qwen2.5-3B apenas aos módulos ativos no dispositivo.",
+          "Consultas naturais sobre saldo, receitas, despesas, vencimentos, parcelas e categorias financeiras, bem como histórico de preços e carrinho no Mercado, retornam respostas exatas com cards AiChatWidget.ModuleSnapshot."
         ]
       },
       {
-        "title": "Checksums & Patches Delta",
+        "title": "Checksums & Patches Delta (KDP1)",
         "items": [
-          "APK v1.5.0 SHA-256: 36bae381c7abcd3a0d06ed61f784b51dbb36006e70ac92bf0e90509734157bf0",
-          "Delta v1.4.0 -> v1.5.0 SHA-256: f7640f8ed73714d3618d0b11c2c5503faf192fd56b3adc760e812cb143c911d9 (21.333.209 bytes, -40,46%)",
-          "Delta v1.3.0 -> v1.5.0 SHA-256: 7d9a0b37108607f2e871b623b82d95d09a17d8b3fab12202b0dc94883f6284e2 (21.333.160 bytes, -40,46%)",
-          "Delta v1.2.0 -> v1.5.0 SHA-256: c1b926cc33d2309f0b2849a58d9bf23a69396dbf4af62fdeb35f31ac105005bf (21.391.264 bytes, -40,29%)",
-          "Delta v1.1.0 -> v1.5.0 SHA-256: 8097d71cbebf6aae3c1fc5fabed24dbbe69f427a42ef2b8adc0e332a84866c66 (21.390.893 bytes, -40,30%)",
-          "Delta v1.0.0 -> v1.5.0 SHA-256: c4131a5b38e7e0e43cdd312e2d5e9116abf9de3bdf4a1a62dabdbd3267bf48f1 (21.390.189 bytes, -40,30%)"
+          "APK Universal v2.0.0: Krono-v2.0.0.apk (35.935.644 bytes) — SHA-256: 4d89a316a0f96e7d6c7b57431b0dc974f1c897da4e4ffa63704b3f712bb729af",
+          "APK Core v2.0.0: Krono-core-v2.0.0.apk (14.803.870 bytes, -58,8%) — SHA-256: bca75ef81dc641d01a91eedd7f7eb1d9fb7d13662a13b65a334c0b4dfcc7d458",
+          "Split APKs: tasks (74.048 B), focus (84.000 B), market (995.664 B), finance (13.251.008 B), goals (60.984 B), notes (47.728 B), qwen (6.615.701 B)",
+          "Delta v1.5.0 -> v2.0.0 SHA-256: d810c35d79e23be8d03a4c56f73073da3924182d56625f7b49c7a406ddbbee53 (15.842.314 bytes, -55,91%)",
+          "Delta v1.4.0 -> v2.0.0 SHA-256: 4a445ce0b299ff4781e5c3c4d7880d57744dc9f7e0c08bef387780937be13561 (21.389.680 bytes, -40,48%)",
+          "Delta v1.3.0 -> v2.0.0 SHA-256: ed530e76ec67df55bdc460721432294d2038d03536b31dbc443571d7850f37d7 (21.389.575 bytes, -40,48%)",
+          "Delta v1.2.0 -> v2.0.0 SHA-256: 0c54375140a4561fec0c889aaba0b32b689f591ddefde034c6bf15423a518542 (21.437.400 bytes, -40,35%)",
+          "Delta v1.1.0 -> v2.0.0 SHA-256: 05516eb5913979634fb84728fd31c505cb233c14048be7d87fde984b192febfc (21.437.001 bytes, -40,35%)",
+          "Delta v1.0.0 -> v2.0.0 SHA-256: a33d9bf67c558bb2adb2d7e9942cddd0d5cf695e144c09ecfe42c040aa740b4a (21.436.268 bytes, -40,35%)"
         ]
       }
     ],
     "signatureAlg": "SHA256withRSA",
-    "signature": "P2BtA0XzzIv9ySvOWzAz+ZNrFBg3qkc4JdbQetnnJLk+E1WEExZKjlCKRnjx9MmJVWIzTROoqg1hQy8hg0ws7dGI8/Ic4bA9lKm6tw/5czrxXjzkdJFb5GeonNRX/7ja3oCBSeHCI8RFd/UuVlw9f/gMjeSDujUtVKhOtRlExoxmiliucl2QqdcJnBoDJUh45+tFYprI4sC+IdVQXKBZmUJIyqlpzjfnqI2vuF4xPpgVmRFcnoqHrSetzwE7iKTzZU+F8Lz7ecAPjkxRTm5xm7os+nPlRqc0hOaeFzf5eQglg9ec+MeEZa/aUSLXGmieyXN3/sV/BQPP+mXSPKi2Mg=="
+    "signature": "dN1qwWnzku5v8kjTpQChGPeJOpdMzSz53L287/oIM6DyFc94zScTPLCdXUHWAFEXIH7X8HgLtMMqIFdKs1Dy7XeMGaobYdes2BIPPy/UGoeBiOZJdpR2iAY57ReCBfCja/XsknBo412wc8FktbBoKhnDqa23F3cvXGwq6YQ19eskKBfnO6pXVNr7eyHymTyQLg/zs+2nXoGI5zgL2zePbSks9dOqLX8Gnk3XbZvDWZx+CiG9jhIUKB5EUvXLwkPpp2O7BSaKxB9WPBDOWMfX/lWVTzR12dUnbnGXn2QMLKRjRIOrzlL3bh8kI6rq4vaj5TAmDcUii5l4a6vdbHrDqg==",
+    "modulesSignature": "fwbm8oJszKdaVgGVWZGFCzzTqBc08XQVTaGn4xWAhs5a8l3xbDgKU7VfOhjehcGh4ljnuQqEYgUdPzdgWz2pyp9Kun8/FUvubEsGCoBqGWo+jHHmLwVvpmrvkffJZqM49Ut5M6QIS82m4sXB405tZ3kabRGBWCDz9QNgCjOmBEtkpn3AZ/fGEc3UeH5VfqjUbOaY+5zOiZ+yHpQkPCdlZaMiYINvU60UDxpzds7pauqMsYeWszs894hDNsyKaeWiVu0T7mknpyEDtyFMJ8xSNqbPw5vG113tE46+zEMZyDb6VIVcQKkYJXVLCRXQMYJ+myAG4cV5ITWVGaKR8vKhfA=="
   },
   "versions": [
+    {
+      "versionCode": 7,
+      "versionName": "2.0.0",
+      "releasedAt": "2026-11-22",
+      "channel": "production",
+      "summary": "Krono agora é modular (Krono Core + 7 Split APKs sob demanda reduzindo o download inicial para 14,80 MB, -58,8%), traz Central de Módulos no app, Construtor #montar na Landing Page e Krono IA Modular sincronizada em tempo real com Finanças, Mercado e todos os módulos ativos.",
+      "highlights": [
+        "Krono Core leve (14,80 MB vs 35,94 MB) com 7 Split APKs independentes sob demanda",
+        "OCR ML Kit offline (13,25 MB) e motor llama.cpp ARM64 (6,62 MB) isolados em splits próprios",
+        "Central de Módulos no app (instalação em lote, remoção real de splits e deep link krono://setup)",
+        "Krono IA Modular com conhecimento completo de Finanças, Mercado e todos os módulos ativos"
+      ],
+      "changelog": [
+        "Divisão modular real em :app Core (14,80 MB) + 7 Android Dynamic Feature APKs (:feature_tasks, :feature_focus, :feature_market, :feature_finance, :feature_goals, :feature_notes e :feature_qwen)",
+        "Isolamento completo de ML Kit OCR (libmlkit_google_ocr_pipeline.so) em :feature_finance, llama.cpp C++ ARM64 (libkrono_llama.so) em :feature_qwen e CameraX/ZXing em :feature_market",
+        "Nova Central de Módulos (ModulesManagerScreen) com seleção em lote via PackageInstaller(MODE_INHERIT_EXISTING), remoção real (removeSplit) com limpeza opcional de dados e importação krono://setup ou KRONO:...",
+        "Assinatura dupla SHA256withRSA retrocompatível no manifesto (signature + modulesSignature) e validação local de SHA-256, certificado assinante oficial, versionCode e splitName por split",
+        "Krono IA Modular (AiModuleRegistry + trava em compilação AiModuleCoverage) cobrindo Finanças (saldo, parcelas, vencimentos, categorias), Mercado (preços por produto e carrinho) e resumo geral no Modo Rápido e no Qwen2.5-3B"
+      ],
+      "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v2.0.0.apk",
+      "apkSizeBytes": 35935644,
+      "sha256": "4d89a316a0f96e7d6c7b57431b0dc974f1c897da4e4ffa63704b3f712bb729af",
+      "minSdk": 26,
+      "abi": "arm64-v8a",
+      "coreApkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-core-v2.0.0.apk",
+      "coreApkSizeBytes": 14803870,
+      "coreSha256": "bca75ef81dc641d01a91eedd7f7eb1d9fb7d13662a13b65a334c0b4dfcc7d458",
+      "modules": [
+        {
+          "id": "tasks",
+          "splitName": "feature_tasks",
+          "name": "Tarefas & Rotina",
+          "description": "Hábitos recorrentes, prioridades, subtarefas, XP e lembretes exatos.",
+          "category": "Produtividade",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-tasks-v2.0.0.apk",
+          "apkSizeBytes": 74048,
+          "sha256": "f9bb520e4dfb46be5c3ca9f4f5f64420e5651a68a3eace9244741a6dcae2ac16"
+        },
+        {
+          "id": "focus",
+          "splitName": "feature_focus",
+          "name": "Foco & Tempo de Tela",
+          "description": "Pomodoro em foreground, bloqueio de distrações e limites de uso de apps.",
+          "category": "Bem-estar Digital",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-focus-v2.0.0.apk",
+          "apkSizeBytes": 84000,
+          "sha256": "8429a943542e94e3163f1bb7b1c7aa69d66c0490a37861147dec8c66b79b20e5"
+        },
+        {
+          "id": "market",
+          "splitName": "feature_market",
+          "name": "Mercado & Preços",
+          "description": "Scanner de código de barras, comparação de preços, carrinho e histórico.",
+          "category": "Dia a Dia",
+          "highlightNote": "Scanner CameraX + ZXing",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-market-v2.0.0.apk",
+          "apkSizeBytes": 995664,
+          "sha256": "2322879216456af1a46e3fafe95a920685b2c9717cab6e3c25359c3607e9f413"
+        },
+        {
+          "id": "finance",
+          "splitName": "feature_finance",
+          "name": "Área Financeira",
+          "description": "Receitas, despesas, parcelas em até 36x, simulador, calendário e OCR.",
+          "category": "Financeiro",
+          "highlightNote": "OCR offline ML Kit (~13,2 MB)",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-finance-v2.0.0.apk",
+          "apkSizeBytes": 13251008,
+          "sha256": "5a6403b39ebd4dc82f56fc6f53ebc75df756fab33050bcd82e352c8d21491eab"
+        },
+        {
+          "id": "goals",
+          "splitName": "feature_goals",
+          "name": "Metas & Marcos",
+          "description": "Metas quantitativas com marcos automáticos, prazo e progresso.",
+          "category": "Planejamento",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-goals-v2.0.0.apk",
+          "apkSizeBytes": 60984,
+          "sha256": "0ba3b5af6a30273466ca10147d56504eda12a743d6181bf843a8d88331b9c303"
+        },
+        {
+          "id": "notes",
+          "splitName": "feature_notes",
+          "name": "Notas & Checklists",
+          "description": "Notas fixáveis, etiquetas por cor/tag e checklists interativos.",
+          "category": "Organização",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-notes-v2.0.0.apk",
+          "apkSizeBytes": 47728,
+          "sha256": "e41b22b969b038c33ea6ee4d9b2c33b33b861bff1162661a08448e849d65d1dc"
+        },
+        {
+          "id": "qwen",
+          "splitName": "feature_qwen",
+          "name": "Motor Qwen2.5-3B (C++)",
+          "description": "Motor nativo llama.cpp ARM64 para conversas com LLM offline local.",
+          "category": "IA Avançada",
+          "highlightNote": "Motor nativo llama.cpp (~6,6 MB)",
+          "apkUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-module-qwen-v2.0.0.apk",
+          "apkSizeBytes": 6615701,
+          "sha256": "752f03a4c82e8d311f1b2d87740b4dfeb3e3644ac7726656cdb54ab01c4e6236"
+        }
+      ],
+      "patches": [
+        {
+          "fromVersionCode": 6,
+          "fromVersionName": "1.5.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.5.0-to-v2.0.0.kpatch",
+          "patchSizeBytes": 15842314,
+          "patchSha256": "d810c35d79e23be8d03a4c56f73073da3924182d56625f7b49c7a406ddbbee53"
+        },
+        {
+          "fromVersionCode": 5,
+          "fromVersionName": "1.4.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.4.0-to-v2.0.0.kpatch",
+          "patchSizeBytes": 21389680,
+          "patchSha256": "4a445ce0b299ff4781e5c3c4d7880d57744dc9f7e0c08bef387780937be13561"
+        },
+        {
+          "fromVersionCode": 4,
+          "fromVersionName": "1.3.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.3.0-to-v2.0.0.kpatch",
+          "patchSizeBytes": 21389575,
+          "patchSha256": "ed530e76ec67df55bdc460721432294d2038d03536b31dbc443571d7850f37d7"
+        },
+        {
+          "fromVersionCode": 3,
+          "fromVersionName": "1.2.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.2.0-to-v2.0.0.kpatch",
+          "patchSizeBytes": 21437400,
+          "patchSha256": "0c54375140a4561fec0c889aaba0b32b689f591ddefde034c6bf15423a518542"
+        },
+        {
+          "fromVersionCode": 2,
+          "fromVersionName": "1.1.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.1.0-to-v2.0.0.kpatch",
+          "patchSizeBytes": 21437001,
+          "patchSha256": "05516eb5913979634fb84728fd31c505cb233c14048be7d87fde984b192febfc"
+        },
+        {
+          "fromVersionCode": 1,
+          "fromVersionName": "1.0.0",
+          "patchUrl": "https://github.com/IsaacNilsonViana/krono-lp/releases/download/v2.0.0/Krono-v1.0.0-to-v2.0.0.kpatch",
+          "patchSizeBytes": 21436268,
+          "patchSha256": "a33d9bf67c558bb2adb2d7e9942cddd0d5cf695e144c09ecfe42c040aa740b4a"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Arquitetura Modular (Krono Core + 7 Split APKs)",
+          "items": [
+            "O aplicativo foi separado no módulo base :app (Krono Core, 14.803.870 bytes, isSplitRequired=false) e 7 dynamic features com <dist:on-demand />: feature_tasks, feature_focus, feature_market, feature_finance, feature_goals, feature_notes e feature_qwen.",
+            "Binários nativos pesados permanecem isolados por split: libmlkit_google_ocr_pipeline.so em feature_finance, libkrono_llama.so ARM64 em feature_qwen e JNI CameraX/ZXing em feature_market, mantendo o APK Universal completo (Krono-v2.0.0.apk, 35.935.644 bytes) disponível para instalação offline em 1 arquivo."
+          ]
+        },
+        {
+          "title": "Central de Módulos, Segurança & Deep Link",
+          "items": [
+            "KronoModuleManager + ModulesManagerScreen permitem baixar em lote via PackageInstaller(MODE_INHERIT_EXISTING), remover splits reais via session.removeSplit com limpeza opcional de dados (clearModuleData) ou importar seleções da Landing Page via krono://setup?modules=... e código KRONO:...",
+            "Manifesto assinado duplamente em RSA-2048 (signature para OTA v1.x e modulesSignature sobre krono-modules-v1) com verificação local via AppUpdateSecurity.verifySplitApkOnDevice (SHA-256, certificado oficial pinado db0bfd...37b6, versionCode e splitName)."
+          ]
+        },
+        {
+          "title": "Krono IA Modular & Sempre Atualizada",
+          "items": [
+            "AiKnowledgeModule + AiModuleRegistry + trava de compilação AiModuleCoverage sincronizam automaticamente Modo Rápido Offline e Qwen2.5-3B apenas aos módulos ativos no dispositivo.",
+            "Consultas naturais sobre saldo, receitas, despesas, vencimentos, parcelas e categorias financeiras, bem como histórico de preços e carrinho no Mercado, retornam respostas exatas com cards AiChatWidget.ModuleSnapshot."
+          ]
+        },
+        {
+          "title": "Checksums & Patches Delta (KDP1)",
+          "items": [
+            "APK Universal v2.0.0: Krono-v2.0.0.apk (35.935.644 bytes) — SHA-256: 4d89a316a0f96e7d6c7b57431b0dc974f1c897da4e4ffa63704b3f712bb729af",
+            "APK Core v2.0.0: Krono-core-v2.0.0.apk (14.803.870 bytes, -58,8%) — SHA-256: bca75ef81dc641d01a91eedd7f7eb1d9fb7d13662a13b65a334c0b4dfcc7d458",
+            "Split APKs: tasks (74.048 B), focus (84.000 B), market (995.664 B), finance (13.251.008 B), goals (60.984 B), notes (47.728 B), qwen (6.615.701 B)",
+            "Delta v1.5.0 -> v2.0.0 SHA-256: d810c35d79e23be8d03a4c56f73073da3924182d56625f7b49c7a406ddbbee53 (15.842.314 bytes, -55,91%)",
+            "Delta v1.4.0 -> v2.0.0 SHA-256: 4a445ce0b299ff4781e5c3c4d7880d57744dc9f7e0c08bef387780937be13561 (21.389.680 bytes, -40,48%)",
+            "Delta v1.3.0 -> v2.0.0 SHA-256: ed530e76ec67df55bdc460721432294d2038d03536b31dbc443571d7850f37d7 (21.389.575 bytes, -40,48%)",
+            "Delta v1.2.0 -> v2.0.0 SHA-256: 0c54375140a4561fec0c889aaba0b32b689f591ddefde034c6bf15423a518542 (21.437.400 bytes, -40,35%)",
+            "Delta v1.1.0 -> v2.0.0 SHA-256: 05516eb5913979634fb84728fd31c505cb233c14048be7d87fde984b192febfc (21.437.001 bytes, -40,35%)",
+            "Delta v1.0.0 -> v2.0.0 SHA-256: a33d9bf67c558bb2adb2d7e9942cddd0d5cf695e144c09ecfe42c040aa740b4a (21.436.268 bytes, -40,35%)"
+          ]
+        }
+      ],
+      "signatureAlg": "SHA256withRSA",
+      "signature": "dN1qwWnzku5v8kjTpQChGPeJOpdMzSz53L287/oIM6DyFc94zScTPLCdXUHWAFEXIH7X8HgLtMMqIFdKs1Dy7XeMGaobYdes2BIPPy/UGoeBiOZJdpR2iAY57ReCBfCja/XsknBo412wc8FktbBoKhnDqa23F3cvXGwq6YQ19eskKBfnO6pXVNr7eyHymTyQLg/zs+2nXoGI5zgL2zePbSks9dOqLX8Gnk3XbZvDWZx+CiG9jhIUKB5EUvXLwkPpp2O7BSaKxB9WPBDOWMfX/lWVTzR12dUnbnGXn2QMLKRjRIOrzlL3bh8kI6rq4vaj5TAmDcUii5l4a6vdbHrDqg==",
+      "modulesSignature": "fwbm8oJszKdaVgGVWZGFCzzTqBc08XQVTaGn4xWAhs5a8l3xbDgKU7VfOhjehcGh4ljnuQqEYgUdPzdgWz2pyp9Kun8/FUvubEsGCoBqGWo+jHHmLwVvpmrvkffJZqM49Ut5M6QIS82m4sXB405tZ3kabRGBWCDz9QNgCjOmBEtkpn3AZ/fGEc3UeH5VfqjUbOaY+5zOiZ+yHpQkPCdlZaMiYINvU60UDxpzds7pauqMsYeWszs894hDNsyKaeWiVu0T7mknpyEDtyFMJ8xSNqbPw5vG113tE46+zEMZyDb6VIVcQKkYJXVLCRXQMYJ+myAG4cV5ITWVGaKR8vKhfA=="
+    },
     {
       "versionCode": 6,
       "versionName": "1.5.0",
       "releasedAt": "2026-11-20",
-      "channel": "production",
+      "channel": "archive",
       "summary": "Nova Área Financeira 100% offline com receitas/despesas, contas mensais, parcelamento em até 36x, OCR no aparelho para boletos e comprovantes (imagens e PDFs), calendário de vencimentos, simulador de compras e lembretes locais.",
       "highlights": [
         "Módulo Financeiro offline completo com Resumo, Calendário, Simulador e Ajustes",

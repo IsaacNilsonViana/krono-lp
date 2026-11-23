@@ -29,6 +29,7 @@ const ReleasesSection: React.FC<ReleasesSectionProps> = ({ versions, latestVersi
   const [expandedDocs, setExpandedDocs] = useState<Record<number, boolean>>({
     [latestVersionCode]: true,
   });
+  const [expandedSplits, setExpandedSplits] = useState<Record<number, boolean>>({});
   const [copiedSha, setCopiedSha] = useState<string | null>(null);
 
   const toggleDocs = (versionCode: number) => {
@@ -145,6 +146,16 @@ const ReleasesSection: React.FC<ReleasesSectionProps> = ({ versions, latestVersi
                       Baixar APK v{rel.versionName} ({formatBytes(rel.apkSizeBytes)})
                     </a>
 
+                    {rel.coreApkUrl && rel.coreApkSizeBytes && (
+                      <a
+                        href={rel.coreApkUrl}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#00C2FF]/45 bg-[#00C2FF]/10 px-4 py-2 font-mono text-xs font-semibold text-[#00C2FF] transition hover:bg-[#00C2FF]/20"
+                      >
+                        <Download className="h-3.5 w-3.5" />
+                        Baixar Krono Core ({formatBytes(rel.coreApkSizeBytes)})
+                      </a>
+                    )}
+
                     {firstPatch && (
                       <a
                         href={firstPatch.patchUrl}
@@ -205,6 +216,56 @@ const ReleasesSection: React.FC<ReleasesSectionProps> = ({ versions, latestVersi
                     ))}
                   </ul>
                 </div>
+
+                {/* Expandable Split APKs list when modular */}
+                {rel.modules && rel.modules.length > 0 && (
+                  <div className="mt-5 border-t border-[#28324F]/70 pt-4">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedSplits((prev) => ({
+                          ...prev,
+                          [rel.versionCode]: !prev[rel.versionCode],
+                        }))
+                      }
+                      className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#00D68F] transition hover:text-white cursor-pointer"
+                    >
+                      {expandedSplits[rel.versionCode] ? (
+                        <>
+                          <ChevronUp className="h-4 w-4" />
+                          Ocultar Split APKs modulares ({rel.modules.length})
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown className="h-4 w-4" />
+                          Ver Split APKs individuais por módulo ({rel.modules.length})
+                        </>
+                      )}
+                    </button>
+
+                    {expandedSplits[rel.versionCode] && (
+                      <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                        {rel.modules.map((mod) => (
+                          <a
+                            key={mod.id}
+                            href={mod.apkUrl}
+                            className="flex items-center justify-between rounded-xl border border-[#28324F] bg-[#0B0E17] px-3 py-2 text-xs transition hover:border-[#00D68F]"
+                          >
+                            <div className="min-w-0">
+                              <div className="truncate font-semibold text-white">{mod.name}</div>
+                              <div className="truncate font-mono text-[10px] text-[#667194]">
+                                {mod.splitName}
+                              </div>
+                            </div>
+                            <span className="ml-2 shrink-0 font-mono font-semibold text-[#00D68F]">
+                              {formatBytes(mod.apkSizeBytes)} ↓
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Expandable full technical documentation */}
                 <div className="mt-6 border-t border-[#28324F] pt-5">
